@@ -13,3 +13,5 @@ clean-targets:
     - "dbt_modules"
 
 models:
+    vars:
+        segment_page_views_table: #location of raw data table
