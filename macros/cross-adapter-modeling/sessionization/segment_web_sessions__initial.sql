@@ -10,7 +10,9 @@
 {{ config(
     materialized = 'incremental',
     sql_where = 'TRUE',
-    unique_key = 'session_id'
+    unique_key = 'session_id',
+    sort = 'session_start_tstamp',
+    dist = 'session_id'
     )}}
 
 {% set partition_by = "partition by session_id" %}
