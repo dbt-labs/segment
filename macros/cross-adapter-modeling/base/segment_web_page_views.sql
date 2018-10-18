@@ -47,12 +47,7 @@ renamed as (
         context_campaign_term as utm_term,
         context_campaign_content as utm_content,
         nullif(parse_url(url)['parameters']['gclid']::varchar, '') as gclid,
-        
-        nullif(split_part(replace(
-            parse_url(url)['parameters']['mkwid']::varchar,
-            '%7C', '|'
-            ), '|', 1), '') as mkw_id,
-        
+
         context_ip as ip,        
         context_user_agent as user_agent
                         
