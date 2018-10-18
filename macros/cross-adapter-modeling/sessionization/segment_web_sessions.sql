@@ -11,6 +11,8 @@
     materialized = 'incremental',
     sql_where = 'TRUE',
     unique_key = 'session_id',
+    sort = 'session_start_tstamp',
+    dist = 'session_id'
     )}}
     
 {% set incremental = adapter.already_exists(this.schema, this.table) and not flags.FULL_REFRESH %}
@@ -25,7 +27,7 @@ more complicated, the performance tradeoff is worth it.
 
 with sessions as (
 
-    select * from {{ref('segment_web_sessions__initial')}}
+    select * from {{ref('segment_web_sessions__stitched')}}
     
     {% if incremental %}
     where session_start_tstamp > (select max(session_start_tstamp) from {{this}})

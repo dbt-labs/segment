@@ -17,7 +17,7 @@
 
 {% set window_clause = "
     partition by session_id 
-    order by user_page_view_number 
+    order by page_view_number 
     rows between unbounded preceding and unbounded following
     " %}
     
@@ -60,7 +60,6 @@ agg as (
 
         session_id,
         anonymous_id,
-        blended_user_id,
         min(tstamp) over ( {{partition_by}} ) as session_start_tstamp,
         max(tstamp) over ( {{partition_by}} ) as session_end_tstamp,
         count(*) over ( {{partition_by}} ) as page_views,
