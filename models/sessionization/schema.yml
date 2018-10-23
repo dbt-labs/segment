@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: segment_web_user_stitching
+    description: "{{doc('segment_web_user_stitching')}}"
+    columns:
+      - name: anonymous_id
+        tests:
+          - unique
+          - not_null
+
+  - name: segment_web_page_views__sessionized
+    description: "{{doc('segment_web_page_views__sessionized')}}"
+    columns:
+      - name: page_view_id
+        tests:
+          - unique
+          - not_null
+
+  - name: segment_web_sessions__initial
+    description: "{{doc('segment_web_sessions__initial')}}"
+    columns:
+      - name: session_id
+        tests:
+          - unique
+          - not_null
+
+  - name: segment_web_sessions__stitched
+    description: "{{doc('segment_web_sessions__stitched')}}"
+    columns:
+      - name: session_id
+        description: ''
+        tests:
+          - unique
+          - not_null
+
+  - name: segment_web_sessions
+    description: "{{doc('segment_web_sessions')}}"
+    columns:
+      - name: session_id
+        description: ''
+        tests:
+          - unique
+          - not_null
