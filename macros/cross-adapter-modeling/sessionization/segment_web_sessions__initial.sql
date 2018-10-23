@@ -51,7 +51,7 @@ with pageviews as (
     select * from {{ref('segment_web_page_views__sessionized')}}
 
     {% if adapter.already_exists(this.schema, this.table) and not flags.FULL_REFRESH %}
-        where tstamp > (select dateadd(hour, -3, max(session_start_tstamp)) from {{ this }})
+        where tstamp > (select dateadd(hour, -{{var('segment_sessionization_trailing_window')}}, max(session_start_tstamp)) from {{this}})
     {% endif %}
 
 ),

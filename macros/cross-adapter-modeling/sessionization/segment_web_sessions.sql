@@ -30,7 +30,14 @@ with sessions as (
     select * from {{ref('segment_web_sessions__stitched')}}
     
     {% if incremental %}
-    where session_start_tstamp > (select max(session_start_tstamp) from {{this}})
+    where session_start_tstamp > (
+        select 
+            dateadd(
+                hour, 
+                -{{var('segment_sessionization_trailing_window')}}, 
+                max(session_start_tstamp)
+                ) 
+        from {{this}})
     {% endif %}
 
 ),

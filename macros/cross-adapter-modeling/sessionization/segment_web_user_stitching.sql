@@ -21,7 +21,7 @@ mapping as (
     
         anonymous_id, 
         
-        last_value(user_id) over (
+        last_value(user_id ignore nulls) over (
             partition by anonymous_id 
             order by tstamp 
             rows between unbounded preceding and unbounded following

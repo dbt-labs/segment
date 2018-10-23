@@ -14,4 +14,10 @@ clean-targets:
 
 models:
     vars:
-        segment_page_views_table: #location of raw data table
+        #location of raw data table
+        segment_page_views_table: 
+        
+        # number of trailing hours to re-sessionize for. 
+        # events can come in late and we want to still be able to incorporate 
+        # them into the definition of a session without needing a full refresh.
+        segment_sessionization_trailing_window: 3 

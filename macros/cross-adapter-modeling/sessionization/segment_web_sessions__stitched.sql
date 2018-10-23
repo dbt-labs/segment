@@ -20,7 +20,7 @@ with sessions as (
     select * from {{ref('segment_web_sessions__initial')}}
 
     {% if adapter.already_exists(this.schema, this.table) and not flags.FULL_REFRESH %}
-        where session_start_tstamp > (select max(session_start_tstamp) from {{ this }})
+        where session_start_tstamp > (select dateadd(hour, -{{var('segment_sessionization_trailing_window')}}, max(session_start_tstamp)) from {{this}})
     {% endif %}
 
 ),
