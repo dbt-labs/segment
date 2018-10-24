@@ -70,8 +70,7 @@ lagged as (
         
         lag(tstamp) over (
             partition by anonymous_id 
-            order by page_view_number 
-            rows between unbounded preceding and unbounded following
+            order by page_view_number
             ) as previous_tstamp
     
     from numbered
