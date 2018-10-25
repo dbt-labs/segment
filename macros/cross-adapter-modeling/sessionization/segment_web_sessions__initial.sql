@@ -87,8 +87,26 @@ diffs as (
     
     from agg
 
+),
+
+tiers as (
+    
+    select
+    
+        *,
+        
+        case
+            when duration_in_s between 0 and 9 then '0s to 9s'
+            when duration_in_s between 10 and 29 then '10s to 29s'
+            when duration_in_s between 30 and 59 then '30s to 59s'
+            when duration_in_s > 59 then '60s or more'
+            else null
+        end as duration_in_s_tier
+        
+    from diffs
+    
 )
 
-select * from diffs
+select * from tiers
 
 {% endmacro %}
