@@ -26,7 +26,7 @@ renamed as (
         timestamp as tstamp,
 
         url as page_url,
-        split_part(split_part(url, '//', 2),'/', 1)::varchar 
+        split_part(split_part(split_part(url, '//', 2),'/', 1),'?',1)::varchar 
             as page_url_host,
         path as page_url_path,
         title as page_title,
