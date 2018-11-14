@@ -45,7 +45,13 @@ renamed as (
             as gclid,
 
         context_ip as ip,        
-        context_user_agent as user_agent
+        context_user_agent as user_agent,
+        case
+            when context_user_agent ilike '%Android%' then 'Android'
+            else replace(
+                split_part(split_part(context_user_agent,'(', 2), ' ', 1),
+                ';','') 
+        end as device_raw
                         
     from source
 
@@ -93,7 +99,13 @@ renamed as (
         nullif(parse_url(url)['parameters']['gclid']::varchar, '') as gclid,
 
         context_ip as ip,        
-        context_user_agent as user_agent
+        context_user_agent as user_agent,
+        case
+            when context_user_agent ilike '%Android%' then 'Android'
+            else replace(
+                split_part(split_part(context_user_agent,'(', 2), ' ', 1),
+                ';','') 
+        end as device_raw
                         
     from source
 

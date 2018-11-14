@@ -133,7 +133,14 @@ session_ids as (
         
         {{segment.star(ref('segment_web_page_views'))}},
         page_view_number,
-        {{segment.surrogate_key('anonymous_id', 'session_number')}} as session_id
+        {{segment.surrogate_key('anonymous_id', 'session_number')}} as session_id,
+        case
+            when device_raw = 'iPhone' then 'iPhone'
+            when device_raw = 'Android' then 'Android'
+            when device_raw in ('iPad', 'iPod') then 'Tablet'
+            when device_raw in ('Windows', 'Macintosh', 'X11') then 'Desktop'
+            else 'uncategorized'
+        end as device
 
     from session_numbers
 
