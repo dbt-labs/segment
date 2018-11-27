@@ -5,8 +5,8 @@
 -- when compiling as `form` is an unknown tag in Jinja (even when it is wrapped
 -- in a `raw` tag).
 -- As a result, when adding to Mode, replace the comments with the correct tags.
-
 -#}
+
 with source as (
     
     select * from {{ref('segment_web_sessions')}}
@@ -40,6 +40,7 @@ with source as (
 select * from final
 
 -- A form tag needs to go here
+
 date_part:
     type: select
     default: day
