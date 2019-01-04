@@ -131,9 +131,9 @@ session_ids as (
 
     select 
         
-        {{segment.star(ref('segment_web_page_views'))}},
+        {{dbt_utils.star(ref('segment_web_page_views'))}},
         page_view_number,
-        {{segment.surrogate_key('anonymous_id', 'session_number')}} as session_id
+        {{dbt_utils.surrogate_key('anonymous_id', 'session_number')}} as session_id
 
     from session_numbers
 
