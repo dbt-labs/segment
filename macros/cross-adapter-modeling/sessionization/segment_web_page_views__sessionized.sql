@@ -135,12 +135,12 @@ session_ids as (
         page_view_number,
         {{segment.surrogate_key('anonymous_id', 'session_number')}} as session_id,
         case
-            when device_raw = 'iPhone' then 'iPhone'
-            when device_raw = 'Android' then 'Android'
-            when device_raw in ('iPad', 'iPod') then 'Tablet'
-            when device_raw in ('Windows', 'Macintosh', 'X11') then 'Desktop'
+            when device = 'iPhone' then 'iPhone'
+            when device = 'Android' then 'Android'
+            when device in ('iPad', 'iPod') then 'Tablet'
+            when device in ('Windows', 'Macintosh', 'X11') then 'Desktop'
             else 'uncategorized'
-        end as device
+        end as device_category
 
     from session_numbers
 

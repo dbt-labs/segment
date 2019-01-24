@@ -36,8 +36,8 @@
     'page_url_query' : 'first_page_url_query',
     'referrer' : 'referrer',
     'referrer_host' : 'referrer_host',
-    'device_raw' : 'device_raw',
-    'device' : 'device'
+    'device' : 'device',
+    'device_category' : 'device_category'
     } %}
     
 {% set last_values = {

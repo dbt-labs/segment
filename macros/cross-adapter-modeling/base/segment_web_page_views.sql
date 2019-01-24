@@ -51,7 +51,7 @@ renamed as (
             else replace(
                 split_part(split_part(context_user_agent,'(', 2), ' ', 1),
                 ';','') 
-        end as device_raw
+        end as device
                         
     from source
 
@@ -105,7 +105,7 @@ renamed as (
             else replace(
                 split_part(split_part(context_user_agent,'(', 2), ' ', 1),
                 ';','') 
-        end as device_raw
+        end as device
                         
     from source
 
