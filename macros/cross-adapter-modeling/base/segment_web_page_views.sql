@@ -52,8 +52,23 @@ renamed as (
                         
     from source
 
+),
+
+final as (
+    
+    select
+        *,
+        case
+            when device = 'iPhone' then 'iPhone'
+            when device = 'Android' then 'Android'
+            when device in ('iPad', 'iPod') then 'Tablet'
+            when device in ('Windows', 'Macintosh', 'X11') then 'Desktop'
+            else 'uncategorized'
+        end as device_category
+    from renamed
+    
 )
 
-select * from renamed
+select * from final
 
 {% endmacro %}
