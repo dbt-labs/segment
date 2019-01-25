@@ -42,12 +42,33 @@ renamed as (
         context_campaign_content as utm_content,
         {{ dbt_utils.get_url_parameter('url', 'gclid') }} as gclid,
         context_ip as ip,
-        context_user_agent as user_agent
-        
+        context_user_agent as user_agent,
+        case
+            when context_user_agent ilike '%Android%' then 'Android'
+            else replace(
+                split_part(split_part(context_user_agent,'(', 2), ' ', 1),
+                ';','') 
+        end as device
+                        
     from source
 
+),
+
+final as (
+    
+    select
+        *,
+        case
+            when device = 'iPhone' then 'iPhone'
+            when device = 'Android' then 'Android'
+            when device in ('iPad', 'iPod') then 'Tablet'
+            when device in ('Windows', 'Macintosh', 'X11') then 'Desktop'
+            else 'uncategorized'
+        end as device_category
+    from renamed
+    
 )
 
-select * from renamed
+select * from final
 
 {% endmacro %}
