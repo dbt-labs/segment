@@ -9,13 +9,11 @@
 
 {{ config(
     materialized = 'incremental',
-    sql_where = 'TRUE',
     unique_key = 'session_id',
     sort = 'session_start_tstamp',
     dist = 'session_id'
     )}}
     
-{% set incremental = adapter.already_exists(this.schema, this.table) and not flags.FULL_REFRESH %}
 
 {# 
 Window functions are challenging to make incremental. This approach grabs 
@@ -29,7 +27,7 @@ with sessions as (
 
     select * from {{ref('segment_web_sessions__stitched')}}
     
-    {% if incremental %}
+    {% if is_incremental() %}
     where session_start_tstamp > (
         select 
             dateadd(
@@ -42,7 +40,7 @@ with sessions as (
 
 ),
 
-{% if incremental %}
+{% if is_incremental() %}
 
 agg as (
 
@@ -71,8 +69,8 @@ windowed as (
 
     from sessions
 
-    {% if incremental %} 
     left join agg using (blended_user_id) 
+    {% if is_incremental() %}
     {% endif %}
     
 
