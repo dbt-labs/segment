@@ -62,7 +62,7 @@ final as (
             when device = 'Android' then 'Android'
             when device in ('iPad', 'iPod') then 'Tablet'
             when device in ('Windows', 'Macintosh', 'X11') then 'Desktop'
-            else 'uncategorized'
+            else 'Uncategorized'
         end as device_category
     from renamed
     
