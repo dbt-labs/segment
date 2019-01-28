@@ -32,9 +32,8 @@ renamed as (
         search as page_url_query,
         
         referrer,
-        ltrim({{ dbt_utils.get_url_host('referrer') }}, 'www.')::varchar 
-            as referrer_host,
-        
+        ltrim({{ dbt_utils.safe_cast(dbt_utils.get_url_host('referrer'), 'string') }}, 'www.') as referrer_host,
+
         context_campaign_source as utm_source,
         context_campaign_medium as utm_medium,
         context_campaign_name as utm_campaign,
@@ -44,10 +43,10 @@ renamed as (
         context_ip as ip,
         context_user_agent as user_agent,
         case
-            when context_user_agent ilike '%Android%' then 'Android'
+            when lower(context_user_agent) like '%android%' then 'Android'
             else replace(
-                split_part(split_part(context_user_agent,'(', 2), ' ', 1),
-                ';','') 
+                {{ dbt_utils.split_part(dbt_utils.split_part('context_user_agent', "'('", 2), "' '", 1) }},
+                ';', '')
         end as device
                         
     from source

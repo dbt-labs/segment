@@ -82,7 +82,7 @@ diffed as (
 
     select
         *,
-        datediff(s, previous_tstamp, tstamp) as period_of_inactivity
+        {{ dbt_utils.datediff('previous_tstamp', 'tstamp', 'second') }} as period_of_inactivity
     from lagged
 
 ),
