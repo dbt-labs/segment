@@ -17,11 +17,11 @@
 {% set partition_by = "partition by session_id" %}
 
 {% set window_clause = "
-    partition by session_id 
-    order by page_view_number 
+    partition by session_id
+    order by page_view_number
     rows between unbounded preceding and unbounded following
     " %}
-    
+
 {% set first_values = {
     'utm_source' : 'utm_source',
     'utm_content' : 'utm_content',
@@ -38,7 +38,7 @@
     'device' : 'device',
     'device_category' : 'device_category'
     } %}
-    
+
 {% set last_values = {
     'page_url' : 'last_page_url',
     'page_url_host' : 'last_page_url_host',
@@ -51,7 +51,15 @@ with pageviews as (
     select * from {{ref('segment_web_page_views__sessionized')}}
 
     {% if is_incremental() %}
-        where tstamp > (select dateadd(hour, -{{var('segment_sessionization_trailing_window')}}, max(session_start_tstamp)) from {{this}})
+        where tstamp > (
+          select {{
+            dbt_utils.safe_cast(
+              dbt_utils.dateadd(
+                'hour',
+                -var('segment_sessionization_trailing_window'),
+                'max(session_start_tstamp)'),
+              'timestamp') }}
+          from {{ this }})
     {% endif %}
 
 ),
@@ -65,15 +73,15 @@ agg as (
         min(tstamp) over ( {{partition_by}} ) as session_start_tstamp,
         max(tstamp) over ( {{partition_by}} ) as session_end_tstamp,
         count(*) over ( {{partition_by}} ) as page_views,
-    
+
         {% for (key, value) in first_values.items() %}
         first_value({{key}}) over ({{window_clause}}) as {{value}},
         {% endfor %}
-        
+
         {% for (key, value) in last_values.items() %}
         last_value({{key}}) over ({{window_clause}}) as {{value}}{% if not loop.last %},{% endif %}
         {% endfor %}
-        
+
     from pageviews
 
 ),
@@ -81,9 +89,9 @@ agg as (
 diffs as (
 
     select
-    
+
         *,
-        
+
         {{ dbt_utils.datediff('session_start_tstamp', 'session_end_tstamp', 'second') }} as duration_in_s
 
     from agg
@@ -91,11 +99,11 @@ diffs as (
 ),
 
 tiers as (
-    
+
     select
-    
+
         *,
-        
+
         case
             when duration_in_s between 0 and 9 then '0s to 9s'
             when duration_in_s between 10 and 29 then '10s to 29s'
@@ -103,9 +111,9 @@ tiers as (
             when duration_in_s > 59 then '60s or more'
             else null
         end as duration_in_s_tier
-        
+
     from diffs
-    
+
 )
 
 select * from tiers
