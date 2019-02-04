@@ -9,7 +9,6 @@
 
 {{ config(
     materialized = 'incremental',
-    sql_where = 'TRUE',
     unique_key = 'session_id',
     sort = 'session_start_tstamp',
     dist = 'session_id'
@@ -19,7 +18,7 @@ with sessions as (
 
     select * from {{ref('segment_web_sessions__initial')}}
 
-    {% if adapter.already_exists(this.schema, this.table) and not flags.FULL_REFRESH %}
+    {% if is_incremental() %}
         where session_start_tstamp > (select dateadd(hour, -{{var('segment_sessionization_trailing_window')}}, max(session_start_tstamp)) from {{this}})
     {% endif %}
 

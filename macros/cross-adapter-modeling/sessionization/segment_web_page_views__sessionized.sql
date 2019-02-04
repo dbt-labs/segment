@@ -9,7 +9,6 @@
 
 {{ config(
     materialized = 'incremental',
-    sql_where = 'TRUE',
     unique_key = 'page_view_id',
     sort = 'tstamp',
     dist = 'page_view_id'
@@ -28,7 +27,7 @@ with pageviews as (
 
     select * from {{ref('segment_web_page_views')}}
     
-    {% if adapter.already_exists(this.schema, this.table) and not flags.FULL_REFRESH %}
+    {% if is_incremental() %}
     where anonymous_id in (
         select distinct anonymous_id 
         from {{ref('segment_web_page_views')}} 
