@@ -64,13 +64,13 @@ windowed as (
             partition by blended_user_id 
             order by sessions.session_start_tstamp
             ) 
-            {% if incremental %}+ agg.starting_session_number {% endif %}
+            {% if is_incremental() %}+ agg.starting_session_number {% endif %}
             as session_number
 
     from sessions
-
-    left join agg using (blended_user_id) 
+    
     {% if is_incremental() %}
+    left join agg using (blended_user_id) 
     {% endif %}
     
 
