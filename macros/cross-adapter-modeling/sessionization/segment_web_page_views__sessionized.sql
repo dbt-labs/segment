@@ -31,7 +31,15 @@ with pageviews as (
     where anonymous_id in (
         select distinct anonymous_id 
         from {{ref('segment_web_page_views')}} 
-        where tstamp >= (select dateadd(hour, -{{var('segment_sessionization_trailing_window')}}, max(tstamp)) from {{this}})
+        where tstamp >= (
+          select {{
+            dbt_utils.safe_cast(
+              dbt_utils.dateadd(
+                'hour',
+                -var('segment_sessionization_trailing_window'),
+                'max(tstamp)'),
+              'timestamp') }}
+          from {{ this }})
         )
     {% endif %}
 
@@ -82,7 +90,7 @@ diffed as (
 
     select
         *,
-        datediff(s, previous_tstamp, tstamp) as period_of_inactivity
+        {{ dbt_utils.datediff('previous_tstamp', 'tstamp', 'second') }} as period_of_inactivity
     from lagged
 
 ),

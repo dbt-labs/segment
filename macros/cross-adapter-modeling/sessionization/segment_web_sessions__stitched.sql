@@ -19,7 +19,15 @@ with sessions as (
     select * from {{ref('segment_web_sessions__initial')}}
 
     {% if is_incremental() %}
-        where session_start_tstamp > (select dateadd(hour, -{{var('segment_sessionization_trailing_window')}}, max(session_start_tstamp)) from {{this}})
+        where session_start_tstamp > (
+          select {{
+            dbt_utils.safe_cast(
+              dbt_utils.dateadd(
+                'hour',
+                -var('segment_sessionization_trailing_window'),
+                'max(session_start_tstamp)'),
+              'timestamp') }}
+          from {{ this }})
     {% endif %}
 
 ),
@@ -32,13 +40,13 @@ id_stitching as (
 
 joined as (
 
-    select 
-        
+    select
+
         sessions.*,
-        
-        coalesce(id_stitching.user_id, sessions.anonymous_id) 
+
+        coalesce(id_stitching.user_id, sessions.anonymous_id)
             as blended_user_id
-    
+
     from sessions
     left join id_stitching using (anonymous_id)
 
