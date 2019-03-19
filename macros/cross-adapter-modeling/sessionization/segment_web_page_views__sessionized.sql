@@ -104,7 +104,7 @@ new_sessions as (
     select 
         *,
         case 
-            when period_of_inactivity <= 30 * 60 then 0
+            when period_of_inactivity <= {{var('segment_inactivity_cutoff')}} then 0
             else 1
         end as new_session
     from diffed
