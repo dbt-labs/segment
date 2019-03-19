@@ -32,7 +32,7 @@ renamed as (
         search as page_url_query,
         
         referrer,
-        ltrim({{ dbt_utils.get_url_host('referrer') }}, 'www.') as referrer_host,
+        {{ dbt_utils.get_url_host('referrer') }} as referrer_host,
 
         context_campaign_source as utm_source,
         context_campaign_medium as utm_medium,
