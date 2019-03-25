@@ -48,6 +48,12 @@ renamed as (
                 {{ dbt_utils.split_part(dbt_utils.split_part('context_user_agent', "'('", 2), "' '", 1) }},
                 ';', '')
         end as device
+        
+        {% if var('segment_pass_through_columns') != [] %}
+        ,
+        {{ var('segment_pass_through_columns') | join (", ")}}
+        
+        {% endif %}
                         
     from source
 

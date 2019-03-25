@@ -45,6 +45,11 @@
     'page_url_path' : 'last_page_url_path',
     'page_url_query' : 'last_page_url_query'
     } %}
+    
+{% for col in var('segment_pass_through_columns') %}
+    {% do first_values.update({col: 'first_' ~ col}) %}
+    {% do last_values.update({col: 'last_' ~ col}) %}
+{% endfor %}
 
 with pageviews as (
 

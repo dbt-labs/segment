@@ -26,3 +26,8 @@ models:
         # that exceeds this number of seconds, the subsequent page view will
         # start a new session.
         segment_inactivity_cutoff: 30 * 60
+        
+        # if there are extra columns that are important to pass through, define
+        # them here. Extremely useful when you have unioned together multiple
+        # segment sources and want to pass through a column indivating the source
+        segment_pass_through_columns: []
