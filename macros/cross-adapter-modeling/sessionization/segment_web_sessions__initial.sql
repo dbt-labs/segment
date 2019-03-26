@@ -23,6 +23,11 @@
     " %}
 
 {% set first_values = {
+    'referrer_source': 'referrer_source',
+    'referrer_content': 'referrer_content',
+    'referrer_medium': 'referrer_medium',
+    'referrer_campaign': 'referrer_campaign',
+    'referrer_term': 'referrer_term',
     'utm_source' : 'utm_source',
     'utm_content' : 'utm_content',
     'utm_medium' : 'utm_medium',

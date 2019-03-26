@@ -7,6 +7,14 @@
 
 {% macro default__segment_web_page_views() %}
 
+{% set referrer_parameters=[
+    'medium',
+    'source',
+    'campaign',
+    'term',
+    'content'
+] %}
+
 with source as (
 
     select * from {{var('segment_page_views_table')}}
@@ -33,6 +41,10 @@ renamed as (
         
         referrer,
         {{ dbt_utils.get_url_host('referrer') }} as referrer_host,
+        
+        {% for param in referrer_parameters %}
+        {{ dbt_utils.get_url_parameter(field='referrer', url_parameter='utm_' ~ param) }} as referrer_{{param}},
+        {% endfor %}
 
         context_campaign_source as utm_source,
         context_campaign_medium as utm_medium,
