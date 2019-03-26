@@ -27,7 +27,9 @@ models:
         # start a new session.
         segment_inactivity_cutoff: 30 * 60
         
-        # if there are extra columns that are important to pass through, define
-        # them here. Extremely useful when you have unioned together multiple
-        # segment sources and want to pass through a column indivating the source
+        # If there are extra columns you wish to pass through this package,
+        # define them here. Columns will be included in the `segment_web_sessions`
+        # model as `first_<column>` and `last_<column>`. Extremely useful when
+        # using this package on top of unioned Segment sources, as you can then
+        # pass through a column indicating which source the data is from.
         segment_pass_through_columns: []
