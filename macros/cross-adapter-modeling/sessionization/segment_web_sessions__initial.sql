@@ -69,6 +69,12 @@ with pageviews as (
 
 ),
 
+referrer_mapping as (
+
+    select * from {{ ref('referrer_mapping') }}
+
+),
+
 agg as (
 
     select distinct
@@ -119,8 +125,21 @@ tiers as (
 
     from diffs
 
+),
+
+mapped as (
+    
+    select
+        tiers.*,
+        referrer_mapping.medium as referrer_medium,
+        referrer_mapping.source as referrer_source
+    
+    from tiers
+    
+    left join referrer_mapping on tiers.referrer_host = referrer_mapping.host
+    
 )
 
-select * from tiers
+select * from mapped
 
 {% endmacro %}
