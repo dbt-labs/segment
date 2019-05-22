@@ -51,7 +51,7 @@
     {% do last_values.update({col: 'last_' ~ col}) %}
 {% endfor %}
 
-with pageviews as (
+with pageviews_sessionized as (
 
     select * from {{ref('segment_web_page_views__sessionized')}}
 
@@ -93,7 +93,7 @@ agg as (
         last_value({{key}}) over ({{window_clause}}) as {{value}}{% if not loop.last %},{% endif %}
         {% endfor %}
 
-    from pageviews
+    from pageviews_sessionized
 
 ),
 
