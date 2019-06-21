@@ -1,8 +1,16 @@
-### dbt models for Segment
+### Segment Sessionization
+This [dbt package](https://docs.getdbt.com/docs/package-management):
+* Performs "user stitching" to tie all events associated with a cookie to the same user_id
+* Transforms pageviews into sessions ("sessionization")
 
-Requires [dbt](https://www.getdbt.com/) >= 0.12.2
+This package requires [dbt](https://www.getdbt.com/) >= 0.12.2.
 
-### models ###
+### Installation Instructions
+Check [dbt Hub](https://hub.getdbt.com/fishtown-analytics/segment/latest/) for the latest installation instructions, or [read the docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
+
+**Note:** This package requires configuration, see the [configuration](#configuration) section, below.
+
+### Models
 
 #### segment_web_page_views
 
@@ -35,7 +43,7 @@ A session is meant to represent a single instance of web activity where a user i
 The logic implemented in this particular model is responsible for incrementally calculating a user's session number; the core sessionization logic is done in upstream models.
 
 
-### installation ###
+### Installation ###
 
 To install the latest version of this package, see the instructions at [dbt hub](https://hub.getdbt.com/fishtown-analytics/segment/latest/).
 
@@ -43,7 +51,7 @@ Alternate installation instructions can be found in the [dbt documentation](http
 
 Then run `dbt deps`
 
-### configuration ###
+### Configuration ###
 
 The variables needed to configure this package are as follows:
 
@@ -54,7 +62,7 @@ The variables needed to configure this package are as follows:
 |`segment_inactivity_cutoff`|Sessionization inactivity cutoff: of there is a gap in page view times that exceeds this number of seconds, the subsequent page view will start a new session.|`30 * 60`|No|
 |`segment_pass_through_columns`|If there are extra columns you wish to pass through this package, define them here. Columns will be included in the `segment_web_sessions` model as `first_<column>` and `last_<column>`. Extremely useful when using this package on top of unioned Segment sources, as you can then pass through a column indicating which source the data is from.|`[]`|No|
 
-#### a note about `segment_page_views_table`
+#### A note about `segment_page_views_table`
 
 If you're doing additional "pre-processing" on your Segment data first, like unioning or doing additional filtering/de-duplication, you may wish to point `segment_page_views_table` to something other than the Segment raw source table. If so, you'll likely want this config value pointed at something in your environment schema (i.e. the dev or testing version of the model, in addition to the production version as your models are modified and promoted). In this case, you can set this value dynamically, i.e.:
 
@@ -62,7 +70,7 @@ If you're doing additional "pre-processing" on your Segment data first, like uni
 segment_page_views_table: "{{ ref('myschema', 'segment_unioned_pages') }}"
 ```
 
-#### example configuration
+#### Example configuration
 
 An example `dbt_project.yml` configuration is provided below:
 
@@ -81,9 +89,9 @@ models:
 
 ```
 
-### database support
+### Database support
 
-These models were written for Redshift and Bigquery.
+These package can be used on BigQuery, Redshift and Snowflake.
 
 ### contribution ###
 
