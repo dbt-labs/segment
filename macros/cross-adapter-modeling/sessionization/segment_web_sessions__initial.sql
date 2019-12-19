@@ -57,13 +57,12 @@ with pageviews_sessionized as (
 
     {% if is_incremental() %}
         where tstamp > (
-          select {{
-            dbt_utils.safe_cast(
-              dbt_utils.dateadd(
+          select
+            {{ dbt_utils.dateadd(
                 'hour',
                 -var('segment_sessionization_trailing_window'),
-                'max(session_start_tstamp)'),
-              'timestamp') }}
+                'max(session_start_tstamp)'
+            ) }}
           from {{ this }})
     {% endif %}
 
