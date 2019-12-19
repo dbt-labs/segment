@@ -14,18 +14,17 @@
     dist = 'session_id'
     )}}
     
-{% set sessionization_cutoff = "
+{% set sessionization_cutoff %}
 (
-    select {{
-        dbt_utils.safe_cast(
-            dbt_utils.dateadd(
-                'hour',
-                -var('segment_sessionization_trailing_window'),
-                'max(session_start_tstamp)'),
-            'timestamp') }}
+    select
+        {{ dbt_utils.dateadd(
+            'hour',
+            -var('segment_sessionization_trailing_window'),
+            'max(session_start_tstamp)'
+        ) }}
     from {{this}}
 )    
-" %}
+{% endset %}
 
 {# 
 Window functions are challenging to make incremental. This approach grabs 
