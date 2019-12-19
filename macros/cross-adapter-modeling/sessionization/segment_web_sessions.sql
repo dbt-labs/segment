@@ -14,7 +14,7 @@
     dist = 'session_id'
     )}}
     
-{% set sessionization_cutoff = "
+{% set sessionization_cutoff %}
 (
     select {{
         dbt_utils.safe_cast(
@@ -25,7 +25,7 @@
             'timestamp') }}
     from {{this}}
 )    
-" %}
+{% endset %}
 
 {# 
 Window functions are challenging to make incremental. This approach grabs 
