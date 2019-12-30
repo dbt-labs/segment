@@ -25,8 +25,8 @@ models:
 This package assumes that your data is in a structure similar to the test
 file included in [example_segment_pages](integration_tests/data/example_segment_pages.sql).
 You may have to do some pre-processing in an upstream model to get it into this shape.
-Similarly, if you need to union multiple sources, de-duplicating records, or filter
-out bad records, so this in an upstream model.
+Similarly, if you need to union multiple sources, de-duplicate records, or filter
+out bad records, do this in an upstream model.
 
 3. Optionally configure extra parameters – see [dbt_project.yml](dbt_project.yml)
 for more details:
@@ -43,8 +43,9 @@ models:
       segment_pass_through_columns: []=
 
 ```
-4. Run your dbt project – the Segment models will get built as part of your run!
-Example configuration
+4. Execute `dbt seed` -- this project includes a CSV that must be seeded for it
+the package to run successfully.
+5. Execute `dbt run` – the Segment models will get built as part of your run!
 
 ### Database support
 These package can be used on Redshift and Snowflake.
