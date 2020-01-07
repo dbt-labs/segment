@@ -16,7 +16,7 @@ integration_tests:
       pass: "{{ env_var('CI_REDSHIFT_DBT_PASS') }}"
       dbname: "{{ env_var('CI_REDSHIFT_DBT_DBNAME') }}"
       port: 5439
-        schema: segment_integration_tests_redshift
+      schema: segment_integration_tests_redshift
       threads: 1
 
     snowflake:
@@ -27,5 +27,5 @@ integration_tests:
       role: "{{ env_var('CI_SNOWFLAKE_DBT_ROLE') }}"
       database: "{{ env_var('CI_SNOWFLAKE_DBT_DATABASE') }}"
       warehouse: "{{ env_var('CI_SNOWFLAKE_DBT_WAREHOUSE') }}"
-        schema: segment_integration_tests_snowflake
+      schema: segment_integration_tests_snowflake
       threads: 1
