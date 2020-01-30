@@ -23,7 +23,7 @@ models:
 
 ```
 This package assumes that your data is in a structure similar to the test
-file included in [example_segment_pages](integration_tests/data/example_segment_pages.sql).
+file included in [example_segment_pages](integration_tests/data/example_segment_pages.csv).
 You may have to do some pre-processing in an upstream model to get it into this shape.
 Similarly, if you need to union multiple sources, de-duplicate records, or filter
 out bad records, do this in an upstream model.
