@@ -31,7 +31,7 @@ with pageviews as (
     where anonymous_id in (
         select distinct anonymous_id 
         from {{ref('segment_web_page_views')}} 
-        where tstamp >= (
+        where cast(tstamp as datetime) >= (
           select
             {{ dbt_utils.dateadd(
                 'hour',
