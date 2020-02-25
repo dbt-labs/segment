@@ -48,7 +48,7 @@ the package to run successfully.
 5. Execute `dbt run` – the Segment models will get built as part of your run!
 
 ### Database support
-These package can be used on Redshift and Snowflake.
+These package can be used on Redshift, Snowflake, and BigQuery.
 
 ### Description of model
 #### segment_web_page_views
