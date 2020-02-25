@@ -45,7 +45,7 @@
     'page_url_path' : 'last_page_url_path',
     'page_url_query' : 'last_page_url_query'
     } %}
-    
+
 {% for col in var('segment_pass_through_columns') %}
     {% do first_values.update({col: 'first_' ~ col}) %}
     {% do last_values.update({col: 'last_' ~ col}) %}
@@ -56,7 +56,7 @@ with pageviews_sessionized as (
     select * from {{ref('segment_web_page_views__sessionized')}}
 
     {% if is_incremental() %}
-        where tstamp > (
+        where cast(tstamp as datetime) > (
           select
             {{ dbt_utils.dateadd(
                 'hour',
@@ -127,16 +127,16 @@ tiers as (
 ),
 
 mapped as (
-    
+
     select
         tiers.*,
         referrer_mapping.medium as referrer_medium,
         referrer_mapping.source as referrer_source
-    
+
     from tiers
-    
+
     left join referrer_mapping on tiers.referrer_host = referrer_mapping.host
-    
+
 )
 
 select * from mapped

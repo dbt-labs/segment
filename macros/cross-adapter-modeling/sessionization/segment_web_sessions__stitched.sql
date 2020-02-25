@@ -19,8 +19,8 @@ with sessions as (
     select * from {{ref('segment_web_sessions__initial')}}
 
     {% if is_incremental() %}
-        where session_start_tstamp > (
-          select 
+        where cast(session_start_tstamp as datetime) > (
+          select
             {{ dbt_utils.dateadd(
                 'hour',
                 -var('segment_sessionization_trailing_window'),
