@@ -52,6 +52,20 @@ jobs:
             dbt run --target snowflake --full-refresh
             dbt run --target snowflake
 
+      - run:
+          name: "Run Tests - BigQuery"
+          environment:
+              GCLOUD_SERVICE_KEY_PATH: "/home/circleci/gcloud-service-key.json"
+
+          command: |
+            . venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt deps
+            dbt seed --target bigquery
+            dbt run --target bigquery --full-refresh
+            dbt run --target bigquery
+
       - save_cache:
           key: deps1-{{ .Branch }}
           paths:
