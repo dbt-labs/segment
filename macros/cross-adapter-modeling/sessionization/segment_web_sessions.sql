@@ -72,7 +72,7 @@ windowed as (
             partition by blended_user_id
             order by sessions.session_start_tstamp
             )
-            {% if is_incremental() %}+ agg.starting_session_number {% endif %}
+            {% if is_incremental() %}+ coalesce(agg.starting_session_number, 0) {% endif %}
             as session_number
 
     from sessions
