@@ -12,6 +12,8 @@ clean-targets:
     - "target"
     - "dbt_modules"
 
+require-dbt-version: ">=0.14.0"
+
 models:
     vars:
         # location of raw data table
