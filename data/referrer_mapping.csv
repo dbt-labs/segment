@@ -81,7 +81,6 @@ social,Instagram,instagram.com
 social,Last.fm,lastfm.ru
 social,hi5,hi5.com
 social,XING,xing.com
-social,Buzznet,wayn.com
 social,Google+,url.google.com
 social,Google+,plus.google.com
 social,LinkedIn,linkedin.com
@@ -112,48 +111,45 @@ social,Reddit,reddit.com
 social,Quora,quora.com
 search,Lo.st,lo.st
 search,Lycos,search.lycos.com
-search,Lycos,www.lycos.com
 search,Lycos,lycos.com
 search,Hit-Parade,req.-hit-parade.com
 search,Hit-Parade,class.hit-parade.com
-search,Hit-Parade,www.hit-parade.com
-search,Suchmaschine.com,www.suchmaschine.com
-search,Hotbot,www.hotbot.com
+search,Hit-Parade,hit-parade.com
+search,Suchmaschine.com,suchmaschine.com
+search,Hotbot,hotbot.com
 search,Conduit,search.conduit.com
-search,Weborama,www.weborama.com
-search,Toolbarhome,www.toolbarhome.com
+search,Weborama,weborama.com
+search,Toolbarhome,toolbarhome.com
 search,Toolbarhome,vshare.toolbarhome.com
-search,Ilse,www.ilse.nl
-search,TalkTalk,www.talktalk.co.uk
-search,Baidu,www.baidu.com
-search,Baidu,www1.baidu.com
+search,Ilse,ilse.nl
+search,TalkTalk,talktalk.co.uk
+search,Baidu,baidu.com
+search,Baidu,.baidu.com
 search,Baidu,zhidao.baidu.com
 search,Baidu,tieba.baidu.com
 search,Baidu,news.baidu.com
 search,Baidu,web.gougou.com
-search,Picsearch,www.picsearch.com
+search,Picsearch,picsearch.com
 search,Genieo,search.genieo.com
-search,maailm,www.maailm.com
+search,maailm,maailm.com
 search,IXquick,ixquick.com
-search,IXquick,www.eu.ixquick.com
+search,IXquick,eu.ixquick.com
 search,IXquick,ixquick.de
-search,IXquick,www.ixquick.de
 search,IXquick,us.ixquick.com
 search,IXquick,s1.us.ixquick.com
 search,IXquick,s2.us.ixquick.com
 search,IXquick,s3.us.ixquick.com
 search,IXquick,s4.us.ixquick.com
 search,IXquick,s5.us.ixquick.com
-search,IXquick,eu.ixquick.com
 search,IXquick,s8-eu.ixquick.com
 search,IXquick,s1-eu.ixquick.de
 search,Centrum,serach.centrum.cz
 search,Centrum,morfeo.centrum.cz
-search,Meinestadt,www.meinestadt.de
-search,Teoma,www.teoma.com
+search,Meinestadt,meinestadt.de
+search,Teoma,teoma.com
 search,Jyxo,jyxo.1188.cz
-search,HighBeam,www.highbeam.com
-search,AllTheWeb,www.alltheweb.com
+search,HighBeam,highbeam.com
+search,AllTheWeb,alltheweb.com
 search,APOLL07,apollo7.de
 search,Google Blogsearch,blogsearch.google.ac
 search,Google Blogsearch,blogsearch.google.ad
@@ -353,66 +349,63 @@ search,Google Blogsearch,blogsearch.google.vu
 search,Google Blogsearch,blogsearch.google.ws
 search,Nigma,nigma.ru
 search,Aport,sm.aport.ru
-search,Web.nl,www.web.nl
+search,Web.nl,web.nl
 search,PeoplePC,search.peoplepc.com
-search,Blogdigger,www.blogdigger.com
+search,Blogdigger,blogdigger.com
 search,FriendFeed,friendfeed.com
 search,Softonic,search.softonic.com
 search,Seznam,search.seznam.cz
-search,X-recherche,www.x-recherche.com
-search,Crawler,www.crawler.com
+search,X-recherche,x-recherche.com
+search,Crawler,crawler.com
 search,WWW,search.www.ee
 search,Digg,digg.com
 search,Apollo Latvia,apollo.lv/portal/search/
-search,Zoek,www3.zoek.nl
+search,Zoek,.zoek.nl
 search,goo,search.goo.ne.jp
 search,goo,ocnsearch.goo.ne.jp
 search,Bing,bing.com
-search,Bing,www.bing.com
 search,Bing,msnbc.msn.com
 search,Bing,dizionario.it.msn.com
 search,Bing,cc.bingj.com
 search,Bing,m.bing.com
-search,Skynet,www.skynet.be
-search,Gigablast,www.gigablast.com
+search,Skynet,skynet.be
+search,Gigablast,gigablast.com
 search,Gigablast,dir.gigablast.com
 search,Nate,search.nate.com
-search,URL.ORGanizier,www.url.org
+search,URL.ORGanizier,url.org
 search,MetaCrawler.de,s1.metacrawler.de
 search,MetaCrawler.de,s2.metacrawler.de
 search,MetaCrawler.de,s3.metacrawler.de
 search,El Mundo,ariadna.elmundo.es
-search,Zapmeta,www.zapmeta.com
-search,Zapmeta,www.zapmeta.nl
-search,Zapmeta,www.zapmeta.de
+search,Zapmeta,zapmeta.com
+search,Zapmeta,zapmeta.nl
+search,Zapmeta,zapmeta.de
 search,Zapmeta,uk.zapmeta.com
 search,Forestle,forestle.org
-search,Forestle,www.forestle.org
 search,Forestle,forestle.mobi
 search,Maxwebsearch,maxwebsearch.com
-search,Mozbot,www.mozbot.fr
-search,Mozbot,www.mozbot.co.uk
-search,Mozbot,www.mozbot.com
+search,Mozbot,mozbot.fr
+search,Mozbot,mozbot.co.uk
+search,Mozbot,mozbot.com
 search,Startpagina,startgoogle.startpagina.nl
 search,canoe.ca,web.canoe.ca
 search,Needtofind,ko.search.need2find.com
 search,Apontador,apontador.com.br
-search,Apontador,www.apontador.com.br
 search,Mail.ru,go.mail.ru
-search,Latne,www.latne.lv
-search,Qualigo,www.qualigo.at
-search,Qualigo,www.qualigo.ch
-search,Qualigo,www.qualigo.de
-search,Qualigo,www.qualigo.nl
-search,WebSearch,www.websearch.com
+search,Latne,latne.lv
+search,Qualigo,qualigo.at
+search,Qualigo,qualigo.ch
+search,Qualigo,qualigo.de
+search,Qualigo,qualigo.nl
+search,WebSearch,websearch.com
 search,Snapdo,search.snapdo.com
-search,Vindex,www.vindex.nl
+search,Vindex,vindex.nl
 search,Vindex,search.vindex.nl
-search,Twingly,www.twingly.com
+search,Twingly,twingly.com
 search,Alice Adsl,rechercher.aliceadsl.fr
 search,Ask Toolbar,search.tb.ask.com
 search,I-play,start.iplay.com
-search,Charter,www.charter.net
+search,Charter,charter.net
 search,Daemon search,daemon-search.com
 search,Daemon search,my.daemon-search.com
 search,Babylon,search.babylon.com
@@ -423,16 +416,15 @@ search,Terra,buscador.terra.es
 search,Terra,buscador.terra.cl
 search,Terra,buscador.terra.com.br
 search,Amazon,amazon.com
-search,Amazon,www.amazon.com
-search,Looksmart,www.looksmart.com
-search,Eniro,www.eniro.se
-search,Walhello,www.walhello.info
-search,Walhello,www.walhello.com
-search,Walhello,www.walhello.de
-search,Walhello,www.walhello.nl
+search,Looksmart,looksmart.com
+search,Eniro,eniro.se
+search,Walhello,walhello.info
+search,Walhello,walhello.com
+search,Walhello,walhello.de
+search,Walhello,walhello.nl
 search,Jungle Key,junglekey.com
 search,Jungle Key,junglekey.fr
-search,Mamma,www.mamma.com
+search,Mamma,mamma.com
 search,Mamma,mamma75.mamma.com
 search,Nifty,search.nifty.com
 search,Globososo,searches.globososo.com
@@ -829,30 +821,28 @@ search,Google Images,images.google.vg
 search,Google Images,images.google.vu
 search,Google Images,images.google.ws
 search,Ask,ask.com
-search,Ask,www.ask.com
 search,Ask,web.ask.com
 search,Ask,int.ask.com
 search,Ask,mws.ask.com
 search,Ask,uk.ask.com
 search,Ask,images.ask.com
 search,Ask,ask.reference.com
-search,Ask,www.askkids.com
+search,Ask,askkids.com
 search,Ask,iwon.ask.com
-search,Ask,www.ask.co.uk
-search,Ask,www.qbyrd.com
+search,Ask,ask.co.uk
+search,Ask,qbyrd.com
 search,Ask,search-results.com
 search,Ask,uk.search-results.com
-search,Ask,www.search-results.com
 search,Ask,int.search-results.com
 search,Naver Images,image.search.naver.com
 search,Naver Images,imagesearch.naver.com
-search,soso.com,www.soso.com
+search,soso.com,soso.com
 search,RPMFind,rpmfind.net
 search,RPMFind,fr2.rpmfind.net
-search,Startsiden,www.startsiden.no
+search,Startsiden,startsiden.no
 search,Freecause,search.freecause.com
-search,Neti,www.neti.ee
-search,Arcor,www.arcor.de
+search,Neti,neti.ee
+search,Arcor,arcor.de
 search,Google News,news.google.ac
 search,Google News,news.google.ad
 search,Google News,news.google.ae
@@ -1049,208 +1039,12 @@ search,Google News,news.google.us
 search,Google News,news.google.vg
 search,Google News,news.google.vu
 search,Google News,news.google.ws
-search,Euroseek,www.euroseek.com
-search,Dalesearch,www.dalesearch.com
-search,TrovaRapido,www.trovarapido.com
+search,Euroseek,euroseek.com
+search,Dalesearch,dalesearch.com
+search,TrovaRapido,trovarapido.com
 search,Yandex Images,images.yandex.ru
 search,Yandex Images,images.yandex.ua
 search,Yandex Images,images.yandex.com
-search,Google,www.google.com
-search,Google,www.google.ac
-search,Google,www.google.ad
-search,Google,www.google.com.af
-search,Google,www.google.com.ag
-search,Google,www.google.com.ai
-search,Google,www.google.am
-search,Google,www.google.it.ao
-search,Google,www.google.com.ar
-search,Google,www.google.as
-search,Google,www.google.at
-search,Google,www.google.com.au
-search,Google,www.google.az
-search,Google,www.google.ba
-search,Google,www.google.com.bd
-search,Google,www.google.be
-search,Google,www.google.bf
-search,Google,www.google.bg
-search,Google,www.google.com.bh
-search,Google,www.google.bi
-search,Google,www.google.bj
-search,Google,www.google.com.bn
-search,Google,www.google.com.bo
-search,Google,www.google.com.br
-search,Google,www.google.bs
-search,Google,www.google.co.bw
-search,Google,www.google.com.by
-search,Google,www.google.by
-search,Google,www.google.com.bz
-search,Google,www.google.ca
-search,Google,www.google.com.kh
-search,Google,www.google.cc
-search,Google,www.google.cd
-search,Google,www.google.cf
-search,Google,www.google.cat
-search,Google,www.google.cg
-search,Google,www.google.ch
-search,Google,www.google.ci
-search,Google,www.google.co.ck
-search,Google,www.google.cl
-search,Google,www.google.cm
-search,Google,www.google.cn
-search,Google,www.google.com.co
-search,Google,www.google.co.cr
-search,Google,www.google.com.cu
-search,Google,www.google.cv
-search,Google,www.google.com.cy
-search,Google,www.google.cz
-search,Google,www.google.de
-search,Google,www.google.dj
-search,Google,www.google.dk
-search,Google,www.google.dm
-search,Google,www.google.com.do
-search,Google,www.google.dz
-search,Google,www.google.com.ec
-search,Google,www.google.ee
-search,Google,www.google.com.eg
-search,Google,www.google.es
-search,Google,www.google.com.et
-search,Google,www.google.fi
-search,Google,www.google.com.fj
-search,Google,www.google.fm
-search,Google,www.google.fr
-search,Google,www.google.ga
-search,Google,www.google.gd
-search,Google,www.google.ge
-search,Google,www.google.gf
-search,Google,www.google.gg
-search,Google,www.google.com.gh
-search,Google,www.google.com.gi
-search,Google,www.google.gl
-search,Google,www.google.gm
-search,Google,www.google.gp
-search,Google,www.google.gr
-search,Google,www.google.com.gt
-search,Google,www.google.gy
-search,Google,www.google.com.hk
-search,Google,www.google.hn
-search,Google,www.google.hr
-search,Google,www.google.ht
-search,Google,www.google.hu
-search,Google,www.google.co.id
-search,Google,www.google.iq
-search,Google,www.google.ie
-search,Google,www.google.co.il
-search,Google,www.google.im
-search,Google,www.google.co.in
-search,Google,www.google.io
-search,Google,www.google.is
-search,Google,www.google.it
-search,Google,www.google.je
-search,Google,www.google.com.jm
-search,Google,www.google.jo
-search,Google,www.google.co.jp
-search,Google,www.google.co.ke
-search,Google,www.google.ki
-search,Google,www.google.kg
-search,Google,www.google.co.kr
-search,Google,www.google.com.kw
-search,Google,www.google.kz
-search,Google,www.google.la
-search,Google,www.google.com.lb
-search,Google,www.google.com.lc
-search,Google,www.google.li
-search,Google,www.google.lk
-search,Google,www.google.co.ls
-search,Google,www.google.lt
-search,Google,www.google.lu
-search,Google,www.google.lv
-search,Google,www.google.com.ly
-search,Google,www.google.co.ma
-search,Google,www.google.md
-search,Google,www.google.me
-search,Google,www.google.mg
-search,Google,www.google.mk
-search,Google,www.google.ml
-search,Google,www.google.mn
-search,Google,www.google.ms
-search,Google,www.google.com.mt
-search,Google,www.google.mu
-search,Google,www.google.mv
-search,Google,www.google.mw
-search,Google,www.google.com.mx
-search,Google,www.google.com.my
-search,Google,www.google.co.mz
-search,Google,www.google.com.na
-search,Google,www.google.ne
-search,Google,www.google.com.nf
-search,Google,www.google.com.ng
-search,Google,www.google.com.ni
-search,Google,www.google.nl
-search,Google,www.google.no
-search,Google,www.google.com.np
-search,Google,www.google.nr
-search,Google,www.google.nu
-search,Google,www.google.co.nz
-search,Google,www.google.com.om
-search,Google,www.google.com.pa
-search,Google,www.google.com.pe
-search,Google,www.google.com.ph
-search,Google,www.google.com.pk
-search,Google,www.google.pl
-search,Google,www.google.pn
-search,Google,www.google.com.pr
-search,Google,www.google.ps
-search,Google,www.google.pt
-search,Google,www.google.com.py
-search,Google,www.google.com.qa
-search,Google,www.google.ro
-search,Google,www.google.rs
-search,Google,www.google.ru
-search,Google,www.google.rw
-search,Google,www.google.com.sa
-search,Google,www.google.com.sb
-search,Google,www.google.sc
-search,Google,www.google.se
-search,Google,www.google.com.sg
-search,Google,www.google.sh
-search,Google,www.google.si
-search,Google,www.google.sk
-search,Google,www.google.com.sl
-search,Google,www.google.sn
-search,Google,www.google.sm
-search,Google,www.google.so
-search,Google,www.google.st
-search,Google,www.google.com.sv
-search,Google,www.google.td
-search,Google,www.google.tg
-search,Google,www.google.co.th
-search,Google,www.google.com.tj
-search,Google,www.google.tk
-search,Google,www.google.tl
-search,Google,www.google.tm
-search,Google,www.google.to
-search,Google,www.google.com.tn
-search,Google,www.google.com.tr
-search,Google,www.google.tt
-search,Google,www.google.com.tw
-search,Google,www.google.co.tz
-search,Google,www.google.com.ua
-search,Google,www.google.co.ug
-search,Google,www.google.ae
-search,Google,www.google.co.uk
-search,Google,www.google.us
-search,Google,www.google.com.uy
-search,Google,www.google.co.uz
-search,Google,www.google.com.vc
-search,Google,www.google.co.ve
-search,Google,www.google.vg
-search,Google,www.google.co.vi
-search,Google,www.google.com.vn
-search,Google,www.google.vu
-search,Google,www.google.ws
-search,Google,www.google.co.za
-search,Google,www.google.co.zm
-search,Google,www.google.co.zw
 search,Google,google.com
 search,Google,google.ac
 search,Google,google.ad
@@ -1281,6 +1075,7 @@ search,Google,google.com.by
 search,Google,google.by
 search,Google,google.com.bz
 search,Google,google.ca
+search,Google,google.com.kh
 search,Google,google.cc
 search,Google,google.cd
 search,Google,google.cf
@@ -1345,7 +1140,6 @@ search,Google,google.com.jm
 search,Google,google.jo
 search,Google,google.co.jp
 search,Google,google.co.ke
-search,Google,google.com.kh
 search,Google,google.ki
 search,Google,google.kg
 search,Google,google.co.kr
@@ -1449,11 +1243,11 @@ search,Google,google.co.zm
 search,Google,google.co.zw
 search,Google,search.avg.com
 search,Google,isearch.avg.com
-search,Google,www.cnn.com
+search,Google,cnn.com
 search,Google,darkoogle.com
 search,Google,search.darkoogle.com
 search,Google,search.foxtab.com
-search,Google,www.gooofullsearch.com
+search,Google,gooofullsearch.com
 search,Google,search.hiyo.com
 search,Google,search.incredimail.com
 search,Google,search1.incredimail.com
@@ -1462,43 +1256,41 @@ search,Google,search3.incredimail.com
 search,Google,search4.incredimail.com
 search,Google,search.incredibar.com
 search,Google,search.sweetim.com
-search,Google,www.fastweb.it
+search,Google,fastweb.it
 search,Google,search.juno.com
 search,Google,find.tdc.dk
 search,Google,searchresults.verizon.com
 search,Google,search.walla.co.il
 search,Google,search.alot.com
-search,Google,www.googleearth.de
-search,Google,www.googleearth.fr
+search,Google,googleearth.de
+search,Google,googleearth.fr
 search,Google,webcache.googleusercontent.com
 search,Google,encrypted.google.com
 search,Google,googlesyndicatedsearch.com
-search,SearchCanvas,www.searchcanvas.com
+search,SearchCanvas,searchcanvas.com
 search,Alexa,alexa.com
 search,Alexa,search.toolbars.alexa.com
-search,Najdi,www.najdi.si
-search,Blogpulse,www.blogpulse.com
-search,YouGoo,www.yougoo.fr
+search,Najdi,najdi.si
+search,Blogpulse,blogpulse.com
+search,YouGoo,yougoo.fr
 search,Bing Images,bing.com/images/search
-search,Bing Images,www.bing.com/images/search
 search,arama,arama.com
-search,Goyellow.de,www.goyellow.de
+search,Goyellow.de,goyellow.de
 search,Certified-Toolbar,search.certified-toolbar.com
 search,1und1,search.1und1.de
 search,AOL,search.aol.com
 search,AOL,search.aol.it
 search,AOL,aolsearch.aol.com
 search,AOL,aolsearch.com
-search,AOL,www.aolrecherche.aol.fr
-search,AOL,www.aolrecherches.aol.fr
-search,AOL,www.aolimages.aol.fr
+search,AOL,aolrecherche.aol.fr
+search,AOL,aolrecherches.aol.fr
+search,AOL,aolimages.aol.fr
 search,AOL,aim.search.aol.com
-search,AOL,www.recherche.aol.fr
+search,AOL,recherche.aol.fr
 search,AOL,find.web.aol.com
 search,AOL,recherche.aol.ca
 search,AOL,aolsearch.aol.co.uk
 search,AOL,search.aol.co.uk
-search,AOL,aolrecherche.aol.fr
 search,AOL,sucheaol.aol.de
 search,AOL,suche.aol.de
 search,AOL,suche.aolsvc.de
@@ -1511,20 +1303,20 @@ search,AOL,search.hp.my.aol.de
 search,AOL,search.hp.my.aol.it
 search,AOL,search-intl.netscape.com
 search,Freenet,suche.freenet.de
-search,Sogou,www.sougou.com
-search,Eurip,www.eurip.com
-search,Monstercrawler,www.monstercrawler.com
-search,Zoeken,www.zoeken.nl
+search,Sogou,sougou.com
+search,Eurip,eurip.com
+search,Monstercrawler,monstercrawler.com
+search,Zoeken,zoeken.nl
 search,Onet,szukaj.onet.pl
-search,Freshweather,www.fresh-weather.com
+search,Freshweather,fresh-weather.com
 search,Voila,search.ke.voila.fr
-search,Voila,www.lemoteur.fr
-search,Sharelook,www.sharelook.fr
-search,Jungle Spider,www.jungle-spider.de
+search,Voila,lemoteur.fr
+search,Sharelook,sharelook.fr
+search,Jungle Spider,jungle-spider.de
 search,Orange,busca.orange.es
 search,Orange,search.orange.co.uk
 search,Rambler,nova.rambler.ru
-search,Altavista,www.altavista.com
+search,Altavista,altavista.com
 search,Altavista,search.altavista.com
 search,Altavista,listings.altavista.com
 search,Altavista,altavista.de
@@ -1535,18 +1327,17 @@ search,T-Online,suche.t-online.de
 search,T-Online,brisbane.t-online.de
 search,T-Online,navigationshilfe.t-online.de
 search,Comcast,serach.comcast.net
-search,Flix,www.flix.de
+search,Flix,flix.de
 search,Virgilio,ricerca.virgilio.it
 search,Virgilio,ricercaimmagini.virgilio.it
 search,Virgilio,ricercavideo.virgilio.it
 search,Virgilio,ricercanews.virgilio.it
 search,Virgilio,mobile.virgilio.it
 search,Metager,meta.rrzn.uni-hannover.de
-search,Metager,www.metager.de
+search,Metager,metager.de
 search,Bluewin,search.bluewin.ch
 search,InfoSpace,infospace.com
 search,InfoSpace,dogpile.com
-search,InfoSpace,www.dogpile.com
 search,InfoSpace,metacrawler.com
 search,InfoSpace,webfetch.com
 search,InfoSpace,webcrawler.com
@@ -1557,30 +1348,30 @@ search,InfoSpace,search.magnetic.com
 search,InfoSpace,search.searchcompletion.com
 search,InfoSpace,clusty.com
 search,Road Runner Search,search.rr.com
-search,ICQ,www.icq.com
+search,ICQ,icq.com
 search,ICQ,search.icq.com
 search,Metager2,metager2.de
-search,Kvasir,www.kvasir.no
+search,Kvasir,kvasir.no
 search,Daum,search.daum.net
 search,Sapo,pesquisa.sapo.pt
 search,Yahoo! Images,image.yahoo.cn
 search,Yahoo! Images,images.search.yahoo.com
 search,Technorati,technorati.com
 search,DuckDuckGo,duckduckgo.com
-search,Vinden,www.vinden.nl
+search,Vinden,vinden.nl
 search,Meta,meta.ua
 search,Arianna,arianna.libero.it
-search,Arianna,www.arianna.com
+search,Arianna,arianna.com
 search,Icerockeet,blogs.icerocket.com
 search,Tiscali,search.tiscali.it
 search,Tiscali,search-dyn.tiscali.it
 search,Tiscali,hledani.tiscali.cz
-search,Yasni,www.yasni.de
-search,Yasni,www.yasni.com
-search,Yasni,www.yasni.co.uk
-search,Yasni,www.yasni.ch
-search,Yasni,www.yasni.at
-search,MySearch,www.mysearch.com
+search,Yasni,yasni.de
+search,Yasni,yasni.com
+search,Yasni,yasni.co.uk
+search,Yasni,yasni.ch
+search,Yasni,yasni.at
+search,MySearch,mysearch.com
 search,MySearch,ms114.mysearch.com
 search,MySearch,ms146.mysearch.com
 search,MySearch,kf.mysearch.myway.com
@@ -1594,54 +1385,49 @@ search,Excite,search.excite.co.uk
 search,Excite,serach.excite.es
 search,Excite,search.excite.nl
 search,Excite,msxml.excite.com
-search,Excite,www.excite.co.jp
+search,Excite,excite.co.jp
 search,Yandex,yandex.ru
 search,Yandex,yandex.ua
 search,Yandex,yandex.com
 search,Yandex,yandex.by
-search,Yandex,www.yandex.ru
-search,Yandex,www.yandex.ua
-search,Yandex,www.yandex.com
-search,Yandex,www.yandex.by
-search,Interia,www.google.interia.pl
+search,Interia,google.interia.pl
 search,Atlas,searchatlas.centrum.cz
-search,Hooseek.com,www.hooseek.com
+search,Hooseek.com,hooseek.com
 search,earthlink,search.earthlink.net
-search,DasTelefonbuch,www1.dastelefonbuch.de
-search,Fixsuche,www.fixsuche.de
-search,Opplysningen 1881,www.1881.no
-search,PriceRunner,www.pricerunner.co.uk
+search,DasTelefonbuch,.dastelefonbuch.de
+search,Fixsuche,fixsuche.de
+search,Opplysningen 1881,1881.no
+search,PriceRunner,pricerunner.co.uk
 search,Delfi,otsing.delfi.ee
-search,Gnadenmeer,www.gnadenmeer.de
-search,Paperball,www.paperball.de
+search,Gnadenmeer,gnadenmeer.de
+search,Paperball,paperball.de
 search,Ecosia,ecosia.org
-search,Witch,www.witch.de
-search,Yatedo,www.yatedo.com
-search,Yatedo,www.yatedo.fr
+search,Witch,witch.de
+search,Yatedo,yatedo.com
+search,Yatedo,yatedo.fr
 search,suche.info,suche.info
 search,Clix,pesquisa.clix.pt
-search,Fireball,www.fireball.de
+search,Fireball,fireball.de
 search,Free,search.free.fr
 search,Free,search1-2.free.fr
 search,Free,search1-1.free.fr
-search,Austronaut,www2.austronaut.at
-search,Austronaut,www1.astronaut.at
+search,Austronaut,.austronaut.at
+search,Austronaut,.astronaut.at
 search,Holmes,holmes.ge
 search,GMX,suche.gmx.net
-search,Trusted-Search,www.trusted--search.com
+search,Trusted-Search,trusted--search.com
 search,Francite,recherche.francite.com
-search,Poisk.ru,www.plazoo.com
 search,Zoohoo,zoohoo.cz
-search,Search.ch,www.search.ch
+search,Search.ch,search.ch
 search,GAIS,gais.cs.ccu.edu.tw
-search,Search.com,www.search.com
+search,Search.com,search.com
 search,Online.no,online.no
-search,Mister Wong,www.mister-wong.com
-search,Mister Wong,www.mister-wong.de
-search,Exalead,www.exalead.fr
-search,Exalead,www.exalead.com
+search,Mister Wong,mister-wong.com
+search,Mister Wong,mister-wong.de
+search,Exalead,exalead.fr
+search,Exalead,exalead.com
 search,360.cn,so.360.cn
-search,360.cn,www.so.com
+search,360.cn,so.com
 search,Geona,geona.net
 search,Wirtualna Polska,szukaj.wp.pl
 search,Yippy,search.yippy.com
@@ -1843,216 +1629,20 @@ search,Google Product Search,google.us/products
 search,Google Product Search,google.vg/products
 search,Google Product Search,google.vu/products
 search,Google Product Search,google.ws/products
-search,Google Product Search,www.google.ac/products
-search,Google Product Search,www.google.ad/products
-search,Google Product Search,www.google.ae/products
-search,Google Product Search,www.google.am/products
-search,Google Product Search,www.google.as/products
-search,Google Product Search,www.google.at/products
-search,Google Product Search,www.google.az/products
-search,Google Product Search,www.google.ba/products
-search,Google Product Search,www.google.be/products
-search,Google Product Search,www.google.bf/products
-search,Google Product Search,www.google.bg/products
-search,Google Product Search,www.google.bi/products
-search,Google Product Search,www.google.bj/products
-search,Google Product Search,www.google.bs/products
-search,Google Product Search,www.google.by/products
-search,Google Product Search,www.google.ca/products
-search,Google Product Search,www.google.cat/products
-search,Google Product Search,www.google.cc/products
-search,Google Product Search,www.google.cd/products
-search,Google Product Search,www.google.cf/products
-search,Google Product Search,www.google.cg/products
-search,Google Product Search,www.google.ch/products
-search,Google Product Search,www.google.ci/products
-search,Google Product Search,www.google.cl/products
-search,Google Product Search,www.google.cm/products
-search,Google Product Search,www.google.cn/products
-search,Google Product Search,www.google.co.bw/products
-search,Google Product Search,www.google.co.ck/products
-search,Google Product Search,www.google.co.cr/products
-search,Google Product Search,www.google.co.id/products
-search,Google Product Search,www.google.co.il/products
-search,Google Product Search,www.google.co.in/products
-search,Google Product Search,www.google.co.jp/products
-search,Google Product Search,www.google.co.ke/products
-search,Google Product Search,www.google.co.kr/products
-search,Google Product Search,www.google.co.ls/products
-search,Google Product Search,www.google.co.ma/products
-search,Google Product Search,www.google.co.mz/products
-search,Google Product Search,www.google.co.nz/products
-search,Google Product Search,www.google.co.th/products
-search,Google Product Search,www.google.co.tz/products
-search,Google Product Search,www.google.co.ug/products
-search,Google Product Search,www.google.co.uk/products
-search,Google Product Search,www.google.co.uz/products
-search,Google Product Search,www.google.co.ve/products
-search,Google Product Search,www.google.co.vi/products
-search,Google Product Search,www.google.co.za/products
-search,Google Product Search,www.google.co.zm/products
-search,Google Product Search,www.google.co.zw/products
-search,Google Product Search,www.google.com/products
-search,Google Product Search,www.google.com.af/products
-search,Google Product Search,www.google.com.ag/products
-search,Google Product Search,www.google.com.ai/products
-search,Google Product Search,www.google.com.ar/products
-search,Google Product Search,www.google.com.au/products
-search,Google Product Search,www.google.com.bd/products
-search,Google Product Search,www.google.com.bh/products
-search,Google Product Search,www.google.com.bn/products
-search,Google Product Search,www.google.com.bo/products
-search,Google Product Search,www.google.com.br/products
-search,Google Product Search,www.google.com.by/products
-search,Google Product Search,www.google.com.bz/products
-search,Google Product Search,www.google.com.co/products
-search,Google Product Search,www.google.com.cu/products
-search,Google Product Search,www.google.com.cy/products
-search,Google Product Search,www.google.com.do/products
-search,Google Product Search,www.google.com.ec/products
-search,Google Product Search,www.google.com.eg/products
-search,Google Product Search,www.google.com.et/products
-search,Google Product Search,www.google.com.fj/products
-search,Google Product Search,www.google.com.gh/products
-search,Google Product Search,www.google.com.gi/products
-search,Google Product Search,www.google.com.gt/products
-search,Google Product Search,www.google.com.hk/products
-search,Google Product Search,www.google.com.jm/products
-search,Google Product Search,www.google.com.kh/products
-search,Google Product Search,www.google.com.kw/products
-search,Google Product Search,www.google.com.lb/products
-search,Google Product Search,www.google.com.lc/products
-search,Google Product Search,www.google.com.ly/products
-search,Google Product Search,www.google.com.mt/products
-search,Google Product Search,www.google.com.mx/products
-search,Google Product Search,www.google.com.my/products
-search,Google Product Search,www.google.com.na/products
-search,Google Product Search,www.google.com.nf/products
-search,Google Product Search,www.google.com.ng/products
-search,Google Product Search,www.google.com.ni/products
-search,Google Product Search,www.google.com.np/products
-search,Google Product Search,www.google.com.om/products
-search,Google Product Search,www.google.com.pa/products
-search,Google Product Search,www.google.com.pe/products
-search,Google Product Search,www.google.com.ph/products
-search,Google Product Search,www.google.com.pk/products
-search,Google Product Search,www.google.com.pr/products
-search,Google Product Search,www.google.com.py/products
-search,Google Product Search,www.google.com.qa/products
-search,Google Product Search,www.google.com.sa/products
-search,Google Product Search,www.google.com.sb/products
-search,Google Product Search,www.google.com.sg/products
-search,Google Product Search,www.google.com.sl/products
-search,Google Product Search,www.google.com.sv/products
-search,Google Product Search,www.google.com.tj/products
-search,Google Product Search,www.google.com.tn/products
-search,Google Product Search,www.google.com.tr/products
-search,Google Product Search,www.google.com.tw/products
-search,Google Product Search,www.google.com.ua/products
-search,Google Product Search,www.google.com.uy/products
-search,Google Product Search,www.google.com.vc/products
-search,Google Product Search,www.google.com.vn/products
-search,Google Product Search,www.google.cv/products
-search,Google Product Search,www.google.cz/products
-search,Google Product Search,www.google.de/products
-search,Google Product Search,www.google.dj/products
-search,Google Product Search,www.google.dk/products
-search,Google Product Search,www.google.dm/products
-search,Google Product Search,www.google.dz/products
-search,Google Product Search,www.google.ee/products
-search,Google Product Search,www.google.es/products
-search,Google Product Search,www.google.fi/products
-search,Google Product Search,www.google.fm/products
-search,Google Product Search,www.google.fr/products
-search,Google Product Search,www.google.ga/products
-search,Google Product Search,www.google.gd/products
-search,Google Product Search,www.google.ge/products
-search,Google Product Search,www.google.gf/products
-search,Google Product Search,www.google.gg/products
-search,Google Product Search,www.google.gl/products
-search,Google Product Search,www.google.gm/products
-search,Google Product Search,www.google.gp/products
-search,Google Product Search,www.google.gr/products
-search,Google Product Search,www.google.gy/products
-search,Google Product Search,www.google.hn/products
-search,Google Product Search,www.google.hr/products
-search,Google Product Search,www.google.ht/products
-search,Google Product Search,www.google.hu/products
-search,Google Product Search,www.google.ie/products
-search,Google Product Search,www.google.im/products
-search,Google Product Search,www.google.io/products
-search,Google Product Search,www.google.iq/products
-search,Google Product Search,www.google.is/products
-search,Google Product Search,www.google.it/products
-search,Google Product Search,www.google.it.ao/products
-search,Google Product Search,www.google.je/products
-search,Google Product Search,www.google.jo/products
-search,Google Product Search,www.google.kg/products
-search,Google Product Search,www.google.ki/products
-search,Google Product Search,www.google.kz/products
-search,Google Product Search,www.google.la/products
-search,Google Product Search,www.google.li/products
-search,Google Product Search,www.google.lk/products
-search,Google Product Search,www.google.lt/products
-search,Google Product Search,www.google.lu/products
-search,Google Product Search,www.google.lv/products
-search,Google Product Search,www.google.md/products
-search,Google Product Search,www.google.me/products
-search,Google Product Search,www.google.mg/products
-search,Google Product Search,www.google.mk/products
-search,Google Product Search,www.google.ml/products
-search,Google Product Search,www.google.mn/products
-search,Google Product Search,www.google.ms/products
-search,Google Product Search,www.google.mu/products
-search,Google Product Search,www.google.mv/products
-search,Google Product Search,www.google.mw/products
-search,Google Product Search,www.google.ne/products
-search,Google Product Search,www.google.nl/products
-search,Google Product Search,www.google.no/products
-search,Google Product Search,www.google.nr/products
-search,Google Product Search,www.google.nu/products
-search,Google Product Search,www.google.pl/products
-search,Google Product Search,www.google.pn/products
-search,Google Product Search,www.google.ps/products
-search,Google Product Search,www.google.pt/products
-search,Google Product Search,www.google.ro/products
-search,Google Product Search,www.google.rs/products
-search,Google Product Search,www.google.ru/products
-search,Google Product Search,www.google.rw/products
-search,Google Product Search,www.google.sc/products
-search,Google Product Search,www.google.se/products
-search,Google Product Search,www.google.sh/products
-search,Google Product Search,www.google.si/products
-search,Google Product Search,www.google.sk/products
-search,Google Product Search,www.google.sm/products
-search,Google Product Search,www.google.sn/products
-search,Google Product Search,www.google.so/products
-search,Google Product Search,www.google.st/products
-search,Google Product Search,www.google.td/products
-search,Google Product Search,www.google.tg/products
-search,Google Product Search,www.google.tk/products
-search,Google Product Search,www.google.tl/products
-search,Google Product Search,www.google.tm/products
-search,Google Product Search,www.google.to/products
-search,Google Product Search,www.google.tt/products
-search,Google Product Search,www.google.us/products
-search,Google Product Search,www.google.vg/products
-search,Google Product Search,www.google.vu/products
-search,Google Product Search,www.google.ws/products
-search,Tixuma,www.tixuma.de
-search,Marktplaats,www.marktplaats.nl
+search,Tixuma,tixuma.de
+search,Marktplaats,marktplaats.nl
 search,eo,eo.st
 search,Volny,web.volny.cz
 search,Yam,search.yam.com
 search,Compuserve,websearch.cs.com
-search,Fast Browser Search,www.fastbrowsersearch.com
+search,Fast Browser Search,fastbrowsersearch.com
 search,Delfi latvia,smart.delfi.lv
 search,Zhongsou,p.zhongsou.com
-search,Suchnase,www.suchnase.de
-search,Everyclick,www.everyclick.com
+search,Suchnase,suchnase.de
+search,Everyclick,everyclick.com
 search,Rakuten,websearch.rakuten.co.jp
 search,Naver,search.naver.com
-search,DasOertliche,www.dasoertliche.de
+search,DasOertliche,dasoertliche.de
 search,Yahoo!,yahoo.com
 search,Yahoo!,ar.search.yahoo.com
 search,Yahoo!,ar.yahoo.com
@@ -2098,41 +1688,41 @@ search,Yahoo!,search.searcharch.yahoo.com
 search,Yahoo!,search.yahoo.com
 search,Yahoo!,uk.search.yahoo.com
 search,Yahoo!,uk.yahoo.com
-search,Yahoo!,www.yahoo.co.jp
+search,Yahoo!,yahoo.co.jp
 search,Yahoo!,search.yahoo.co.jp
-search,Yahoo!,www.cercato.it
+search,Yahoo!,cercato.it
 search,Yahoo!,search.offerbox.com
 search,Yahoo!,ys.mirostart.com
-search,Abacho,www.abacho.de
-search,Abacho,www.abacho.com
-search,Abacho,www.abacho.co.uk
-search,Abacho,www.se.abacho.com
-search,Abacho,www.tr.abacho.com
-search,Abacho,www.abacho.at
-search,Abacho,www.abacho.fr
-search,Abacho,www.abacho.es
-search,Abacho,www.abacho.ch
-search,Abacho,www.abacho.it
-search,Trouvez.com,www.trouvez.com
-search,Firstfind,www.firstsfind.com
-search,Plazoo,www.plazoo.com
-search,Gomeo,www.gomeo.com
-search,Searchy,www.searchy.co.uk
+search,Abacho,abacho.de
+search,Abacho,abacho.com
+search,Abacho,abacho.co.uk
+search,Abacho,se.abacho.com
+search,Abacho,tr.abacho.com
+search,Abacho,abacho.at
+search,Abacho,abacho.fr
+search,Abacho,abacho.es
+search,Abacho,abacho.ch
+search,Abacho,abacho.it
+search,Trouvez.com,trouvez.com
+search,Firstfind,firstsfind.com
+search,Plazoo,plazoo.com
+search,Gomeo,gomeo.com
+search,Searchy,searchy.co.uk
 search,1.cz,1.cz
-search,Gule Sider,www.gulesider.no
-search,Cuil,www.cuil.com
+search,Gule Sider,gulesider.no
+search,Cuil,cuil.com
 search,Winamp,search.winamp.com
 search,Web.de,suche.web.de
 search,ABCsøk,abcsolk.no
 search,ABCsøk,verden.abcsok.no
-search,La Toile Du Quebec Via Google,www.toile.com
+search,La Toile Du Quebec Via Google,toile.com
 search,La Toile Du Quebec Via Google,web.toile.com
 search,dmoz,dmoz.org
 search,dmoz,editors.dmoz.org
-search,Acoon,www.acoon.de
+search,Acoon,acoon.de
 search,blekko,blekko.com
 search,Searchalot,searchalot.com
-search,Kataweb,www.kataweb.it
+search,Kataweb,kataweb.it
 search,Biglobe,cgi.search.biglobe.ne.jp
 search,uol.com.br,busca.uol.com.br
 unknown,Outbrain,paid.outbrain.com
@@ -2146,7 +1736,6 @@ unknown,Google,drive.google.com
 unknown,Google,sites.google.com
 unknown,Google,groups.google.com
 unknown,Google,groups.google.co.uk
-unknown,Google,news.google.co.uk
 unknown,Yahoo!,finance.yahoo.com
 unknown,Yahoo!,news.yahoo.com
 unknown,Yahoo!,eurosport.yahoo.com
@@ -2164,3 +1753,53 @@ unknown,Yahoo!,cars.yahoo.com
 unknown,Yahoo!,lifestyle.yahoo.com
 unknown,Yahoo!,omg.yahoo.com
 unknown,Yahoo!,match.yahoo.net
+social,Pinterest,pinterest.com
+social,Pinterest,in.pinterest.com
+social,Pinterest,pinterest.co.kr
+social,Pinterest,pinterest.ru
+social,Pinterest,pinterest.co.uk
+social,Pinterest,br.pinterest.com
+social,Pinterest,pinterest.es
+social,Pinterest,id.pinterest.com
+social,Pinterest,pinterest.fr
+social,Pinterest,pinterest.ca
+social,Pinterest,pinterest.jp
+social,Pinterest,pinterest.de
+social,Pinterest,pinterest.com.mx
+social,Pinterest,pinterest.it
+social,Pinterest,pinterest.com.au
+social,Pinterest,pinterest.ph
+social,Pinterest,pl.pinterest.com
+social,Pinterest,nl.pinterest.com
+social,Pinterest,tr.pinterest.com
+social,Pinterest,co.pinterest.com
+social,Pinterest,ar.pinterest.com
+social,Pinterest,pinterest.pt
+social,Pinterest,za.pinterest.com
+social,Pinterest,pinterest.cl
+social,Pinterest,pinterest.se
+social,Pinterest,ro.pinterest.com
+social,Pinterest,pinterest.dk
+social,Pinterest,pinterest.at
+social,Pinterest,pinterest.nz
+social,Pinterest,pinterest.ch
+social,Pinterest,cz.pinterest.com
+social,Pinterest,hu.pinterest.com
+social,Pinterest,gr.pinterest.com
+social,Pinterest,pinterest.ie
+social,Pinterest,no.pinterest.com
+social,Pinterest,sk.pinterest.com
+social,Pinterest,fi.pinterest.com
+social,Instagram,l.instagram.com
+social,Facebook,web.facebook.com
+search,Baidu,m.baidu.com
+social,Huaban,huaban.com
+social,Vkontakte,away.vk.com
+search,360.cn,360.cn
+social,Zhihu,link.zhihu.com
+social,Zhihu,zhihu.com
+social,Tumblr,t.umblr.com
+search,Sogou,sogou.com
+search,Sogou,m.sogou.com
+social,UISDC,uisdc.com
+social,UISDC,hao.uisdc.com

@@ -32,7 +32,11 @@ renamed as (
         search as page_url_query,
         
         referrer,
-        {{ dbt_utils.get_url_host('referrer') }} as referrer_host,
+        replace(
+            {{ dbt_utils.get_url_host('referrer') }},
+            'www.',
+            ''
+        ) as referrer_host,
 
         context_campaign_source as utm_source,
         context_campaign_medium as utm_medium,
@@ -71,7 +75,7 @@ final as (
             else 'Uncategorized'
         end as device_category
     from renamed
-    
+
 )
 
 select * from final
