@@ -17,13 +17,15 @@ require-dbt-version: ">=0.14.0"
 models:
     vars:
         # location of raw data table
-        segment_page_views_table:
+        segment_schema:
+
+        segment_page_views_relation:
 
         # number of trailing hours to re-sessionize for.
         # events can come in late and we want to still be able to incorporate
         # them into the definition of a session without needing a full refresh.
         segment_sessionization_trailing_window: 3
-        
+
         # sessionization inactivity cutoff: of there is a gap in page view times
         # that exceeds this number of seconds, the subsequent page view will
         # start a new session.

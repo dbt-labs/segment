@@ -7,4 +7,4 @@ profile: 'integration_tests'
 models:
   segment:
     vars:
-      segment_page_views_table: "{{ ref('example_segment_pages') }}"
+      segment_page_views_relation: "{{ ref('example_segment_pages') }}"

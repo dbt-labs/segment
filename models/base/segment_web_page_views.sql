@@ -1,6 +1,13 @@
 with source as (
 
-    select * from {{var('segment_page_views_table')}}
+    select * from
+    {% if var('segment_schema', None) %}
+    {{ source('segment', 'pages') }}
+    {% elif var('segment_page_views_relation', None) %}
+    {{ var('segment_page_views_relation') }}
+    {% else %}
+    {{ exceptions.raise_compiler_error("Must define one or the other") }}
+    {% endif %}
 
 ),
 
