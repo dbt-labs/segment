@@ -1,18 +1,9 @@
-{% macro segment_web_sessions() %}
-
-    {{ adapter_macro('segment.segment_web_sessions') }}
-
-{% endmacro %}
-
-
-{% macro default__segment_web_sessions() %}
-
 {{ config(
     materialized = 'incremental',
     unique_key = 'session_id',
     sort = 'session_start_tstamp',
     dist = 'session_id'
-    )}}
+) }}
 
 {% set sessionization_cutoff %}
 (
@@ -85,5 +76,3 @@ windowed as (
 )
 
 select * from windowed
-
-{% endmacro %}

@@ -1,18 +1,9 @@
-{% macro segment_web_page_views__sessionized() %}
-
-    {{ adapter_macro('segment.segment_web_page_views__sessionized') }}
-
-{% endmacro %}
-
-
-{% macro default__segment_web_page_views__sessionized() %}
-
 {{ config(
     materialized = 'incremental',
     unique_key = 'page_view_id',
     sort = 'tstamp',
     dist = 'page_view_id'
-    )}}
+) }}
 
 {#
 the initial CTE in this model is unusually complicated; its function is to
@@ -146,5 +137,3 @@ session_ids as (
 )
 
 select * from session_ids
-
-{% endmacro %}

@@ -1,13 +1,6 @@
-{% macro segment_web_user_stitching() %}
-
-    {{ adapter_macro('segment.segment_web_user_stitching') }}
-
-{% endmacro %}
-
-
-{% macro default__segment_web_user_stitching() %}
-
-{{config(materialized = 'table')}}
+{{ config(
+    materialized = 'table'
+) }}
 
 with events as (
 
@@ -40,5 +33,3 @@ mapping as (
 )
 
 select * from mapping 
-
-{% endmacro %}

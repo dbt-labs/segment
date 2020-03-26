@@ -1,12 +1,3 @@
-{% macro segment_web_page_views() %}
-
-    {{ adapter_macro('segment.segment_web_page_views') }}
-
-{% endmacro %}
-
-
-{% macro default__segment_web_page_views() %}
-
 with source as (
 
     select * from {{var('segment_page_views_table')}}
@@ -79,5 +70,3 @@ final as (
 )
 
 select * from final
-
-{% endmacro %}

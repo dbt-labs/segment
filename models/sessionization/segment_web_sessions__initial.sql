@@ -1,18 +1,9 @@
-{% macro segment_web_sessions__initial() %}
-
-    {{ adapter_macro('segment.segment_web_sessions__initial') }}
-
-{% endmacro %}
-
-
-{% macro default__segment_web_sessions__initial() %}
-
 {{ config(
     materialized = 'incremental',
     unique_key = 'session_id',
     sort = 'session_start_tstamp',
     dist = 'session_id'
-    )}}
+) }}
 
 {% set partition_by = "partition by session_id" %}
 
@@ -140,5 +131,3 @@ mapped as (
 )
 
 select * from mapped
-
-{% endmacro %}

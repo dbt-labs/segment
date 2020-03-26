@@ -1,18 +1,9 @@
-{% macro segment_web_sessions__stitched() %}
-
-    {{ adapter_macro('segment.segment_web_sessions__stitched') }}
-
-{% endmacro %}
-
-
-{% macro default__segment_web_sessions__stitched() %}
-
 {{ config(
     materialized = 'incremental',
     unique_key = 'session_id',
     sort = 'session_start_tstamp',
     dist = 'session_id'
-    )}}
+) }}
 
 with sessions as (
 
@@ -52,5 +43,3 @@ joined as (
 )
 
 select * from joined
-
-{% endmacro %}
