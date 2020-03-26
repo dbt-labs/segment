@@ -3,6 +3,7 @@ version: 2
 sources:
   - name: segment
     schema: "{{ var('segment_schema', None) }}"
+    database: "{{ var('segement_database', None) }}"
     tables:
       - name: pages
         description: One record per page view
