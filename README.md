@@ -43,7 +43,7 @@ Then, pass the package the pre-processed model instead, like so (do **not** set 
 models:
   segment:
     vars:
-      segment_page_views_relation: {{ ref("unioned_segment_page_views") }}
+      segment_page_views_relation_override: {{ ref("unioned_segment_page_views") }}
 ```
 
 

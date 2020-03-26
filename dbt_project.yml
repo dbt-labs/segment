@@ -19,7 +19,7 @@ models:
         # location of raw data table
         segment_schema:
 
-        segment_page_views_relation:
+        segment_page_views_relation_override:
 
         # number of trailing hours to re-sessionize for.
         # events can come in late and we want to still be able to incorporate

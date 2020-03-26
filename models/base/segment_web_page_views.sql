@@ -1,10 +1,10 @@
 with source as (
 
     select * from
-    {% if var('segment_schema', None) %}
+    {% if var('segment_page_views_relation_override', None) %}
+    {{ var('segment_page_views_relation_override') }}
+    {% elif var('segment_schema', None) %}
     {{ source('segment', 'pages') }}
-    {% elif var('segment_page_views_relation', None) %}
-    {{ var('segment_page_views_relation') }}
     {% else %}
     {{ exceptions.raise_compiler_error("Must define one or the other") }}
     {% endif %}
