@@ -9,12 +9,12 @@ with events as (
 mapping as (
 
     select distinct
-    
-        anonymous_id, 
+
+        anonymous_id,
 
         last_value(user_id ignore nulls) over (
-            partition by anonymous_id 
-            order by tstamp 
+            partition by anonymous_id
+            order by tstamp
             rows between unbounded preceding and unbounded following
         ) as user_id,
 
@@ -30,4 +30,4 @@ mapping as (
 
 )
 
-select * from mapping 
+select * from mapping
