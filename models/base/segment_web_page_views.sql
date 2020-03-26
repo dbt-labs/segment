@@ -1,1 +1,0 @@
-{{ segment_web_page_views() }}
