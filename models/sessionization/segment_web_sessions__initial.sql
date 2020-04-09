@@ -120,6 +120,7 @@ tiers as (
 mapped as (
 
     select
+        distinct
         tiers.*,
         referrer_mapping.medium as referrer_medium,
         referrer_mapping.source as referrer_source
