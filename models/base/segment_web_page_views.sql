@@ -1,17 +1,17 @@
 with source as (
 
     select * from {{var('segment_page_views_table')}}
-    
+
 ),
 
 renamed as (
 
     select
-    
+
         id as page_view_id,
         anonymous_id,
         user_id,
-        
+
         received_at as received_at_tstamp,
         sent_at as sent_at_tstamp,
         timestamp as tstamp,
@@ -21,7 +21,7 @@ renamed as (
         path as page_url_path,
         title as page_title,
         search as page_url_query,
-        
+
         referrer,
         replace(
             {{ dbt_utils.get_url_host('referrer') }},
@@ -43,19 +43,19 @@ renamed as (
                 {{ dbt_utils.split_part(dbt_utils.split_part('context_user_agent', "'('", 2), "' '", 1) }},
                 ';', '')
         end as device
-        
+
         {% if var('segment_pass_through_columns') != [] %}
         ,
         {{ var('segment_pass_through_columns') | join (", ")}}
-        
+
         {% endif %}
-                        
+
     from source
 
 ),
 
 final as (
-    
+
     select
         *,
         case

@@ -2,7 +2,7 @@ name: 'segment'
 version: '1.0'
 
 source-paths: ["models"]
-analysis-paths: ["analysis"] 
+analysis-paths: ["analysis"]
 test-paths: ["tests"]
 data-paths: ["data"]
 macro-paths: ["macros"]
@@ -12,21 +12,23 @@ clean-targets:
     - "target"
     - "dbt_modules"
 
+require-dbt-version: ">=0.14.0"
+
 models:
     vars:
         # location of raw data table
-        segment_page_views_table: 
-        
-        # number of trailing hours to re-sessionize for. 
-        # events can come in late and we want to still be able to incorporate 
+        segment_page_views_table:
+
+        # number of trailing hours to re-sessionize for.
+        # events can come in late and we want to still be able to incorporate
         # them into the definition of a session without needing a full refresh.
-        segment_sessionization_trailing_window: 3 
+        segment_sessionization_trailing_window: 3
         
         # sessionization inactivity cutoff: of there is a gap in page view times
         # that exceeds this number of seconds, the subsequent page view will
         # start a new session.
         segment_inactivity_cutoff: 30 * 60
-        
+
         # If there are extra columns you wish to pass through this package,
         # define them here. Columns will be included in the `segment_web_sessions`
         # model as `first_<column>` and `last_<column>`. Extremely useful when

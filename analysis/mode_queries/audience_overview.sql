@@ -8,16 +8,16 @@
 -#}
 
 with source as (
-    
+
     select * from {{ref('segment_web_sessions')}}
-    
+
 )
 
 , final as (
-    
+
     select
         date_trunc({% raw %}'{{date_part}}'{% endraw %}, session_start_tstamp)::date as period,
-        
+
         count(*) as sessions,
         count(distinct blended_user_id) as distinct_users,
         sum(page_views) as page_views,
@@ -29,12 +29,12 @@ with source as (
         sum(case when session_number > 1 then 1 else 0 end) as repeat_sessions
 
     from source
-        
+
     where session_start_tstamp >= '{% raw %}{{start_date}}{% endraw %}'
       and session_start_tstamp <  '{% raw %}{{end_date}}{% endraw %}'
-     
+
     group by 1
-    
+
 )
 
 select * from final
