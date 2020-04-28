@@ -33,7 +33,7 @@ If applicable, add screenshots or log output to help explain your problem.
 --->
 
 ### System information
-**The contents of your `packages.yml` file*:*
+**The contents of your `packages.yml` file:**
 
 **Which database are you using dbt with?**
 - [ ] postgres

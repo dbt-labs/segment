@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for dbt
+about: Suggest an idea for this package
 title: ''
 labels: enhancement, triage
 assignees: ''
