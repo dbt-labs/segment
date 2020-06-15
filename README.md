@@ -5,7 +5,7 @@ This [dbt package](https://docs.getdbt.com/docs/package-management):
 
 
 ## Installation instructions
-
+New to dbt packages? Read more about them [here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management/).
 1. Include this package in your `packages.yml` -- check [here](https://hub.getdbt.com/fishtown-analytics/segment/latest/)
 for installation instructions.
 2. Run `dbt deps`
@@ -14,12 +14,12 @@ for installation instructions.
 
 ```YAML
 # dbt_project.yml
+config-version: 2
 ...
 
-models:
+vars:
   segment:
-    vars:
-      segment_page_views_table: "{{ source('segment', 'pages') }}"
+    segment_page_views_table: "{{ source('segment', 'pages') }}"
 
 ```
 This package assumes that your data is in a structure similar to the test
@@ -32,15 +32,16 @@ out bad records, do this in an upstream model.
 for more details:
 ```yaml
 # dbt_project.yml
+config-version: 2
+
 ...
 
-models:
+vars:
   segment:
-    vars:
-      segment_page_views_table: "{{ source('segment', 'pages') }}"
-      segment_sessionization_trailing_window: 3
-      segment_inactivity_cutoff: 30 * 60
-      segment_pass_through_columns: []
+    segment_page_views_table: "{{ source('segment', 'pages') }}"
+    segment_sessionization_trailing_window: 3
+    segment_inactivity_cutoff: 30 * 60
+    segment_pass_through_columns: []
 
 ```
 5. Execute `dbt seed` -- this project includes a CSV that must be seeded for it

@@ -1,10 +1,12 @@
-
 name: 'segment_integration_tests'
 version: '1.0'
+config-version: 2
 
 profile: 'integration_tests'
 
-models:
+vars:
   segment:
-    vars:
-      segment_page_views_table: "{{ ref('example_segment_pages') }}"
+    segment_page_views_table: "{{ ref('example_segment_pages') }}"
+
+seeds:
+  +quote_columns: false
