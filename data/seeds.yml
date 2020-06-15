@@ -1,0 +1,18 @@
+version: 2
+
+seeds:
+  - name: referrer_mapping
+    description: "This is a CSV version of Snowplow's [referer parser database](https://github.com/snowplow-referer-parser/referer-parser)"
+    columns:
+      - name: medium
+        tests:
+          - not_null
+
+      - name: source
+        tests:
+          - not_null
+
+      - name: host
+        tests:
+          - unique
+          - not_null
