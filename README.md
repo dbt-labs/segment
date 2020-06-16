@@ -6,8 +6,7 @@ This [dbt package](https://docs.getdbt.com/docs/package-management):
 
 ## Installation instructions
 New to dbt packages? Read more about them [here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management/).
-1. Include this package in your `packages.yml` — check [here](https://hub.getdbt.com/fishtown-analytics/segment/latest/)
-for installation instructions.
+1. Include this package in your `packages.yml` — check [here](https://hub.getdbt.com/fishtown-analytics/segment/latest/) for the latest version number.
 2. Run `dbt deps`
 3. Include the following in your `dbt_project.yml` directly within your `vars:` block (making sure to handle indenting appropriately). **Update the value to point to your segment page views table**.
 
