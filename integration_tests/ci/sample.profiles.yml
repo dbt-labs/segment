@@ -15,7 +15,7 @@ integration_tests:
       user: "{{ env_var('REDSHIFT_TEST_USER') }}"
       pass: "{{ env_var('REDSHIFT_TEST_PASS') }}"
       dbname: "{{ env_var('REDSHIFT_TEST_DBNAME') }}"
-      port: 5439
+      port: "{{ env_var('REDSHIFT_TEST_PORT') }}"
       schema: segment_integration_tests_redshift
       threads: 1
 
