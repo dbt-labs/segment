@@ -34,6 +34,6 @@ integration_tests:
       type: bigquery
       method: service-account
       keyfile: "{{ env_var('BIGQUERY_SERVICE_KEY_PATH') }}"
-      project: 'dbt-integration-tests'
-      schema: segment_integration_tests_snowflake
+      project: 'dbt-test-env'
+      schema: segment_integration_tests_bigquery
       threads: 1
