@@ -28,7 +28,8 @@ out bad records, do this in an upstream model.
 
 4. Optionally configure extra parameters by adding them to your own `dbt_project.yml` file – see [dbt_project.yml](dbt_project.yml)
 for more details:
-```yaml
+
+```YAML
 # dbt_project.yml
 config-version: 2
 
