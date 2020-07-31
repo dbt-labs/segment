@@ -36,10 +36,10 @@ jobs:
             . venv/bin/activate
             echo `pwd`
             cd integration_tests
-            dbt deps
-            dbt seed --target redshift
-            dbt run --target redshift --full-refresh
-            dbt run --target redshift
+            dbt --warn-error deps
+            dbt --warn-error seed --target redshift
+            dbt --warn-error run --target redshift --full-refresh
+            dbt --warn-error run --target redshift
 
       - run:
           name: "Run Tests - Snowflake"
@@ -47,10 +47,10 @@ jobs:
             . venv/bin/activate
             echo `pwd`
             cd integration_tests
-            dbt deps
-            dbt seed --target snowflake
-            dbt run --target snowflake --full-refresh
-            dbt run --target snowflake
+            dbt --warn-error deps
+            dbt --warn-error seed --target snowflake
+            dbt --warn-error run --target snowflake --full-refresh
+            dbt --warn-error run --target snowflake
 
       - run:
           name: "Run Tests - BigQuery"
@@ -61,10 +61,10 @@ jobs:
             . venv/bin/activate
             echo `pwd`
             cd integration_tests
-            dbt deps
-            dbt seed --target bigquery
-            dbt run --target bigquery --full-refresh
-            dbt run --target bigquery
+            dbt --warn-error deps
+            dbt --warn-error seed --target bigquery
+            dbt --warn-error run --target bigquery --full-refresh
+            dbt --warn-error run --target bigquery
 
       - save_cache:
           key: deps1-{{ .Branch }}
