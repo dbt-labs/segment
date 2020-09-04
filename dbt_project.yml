@@ -1,6 +1,6 @@
 name: 'segment'
 version: '1.0'
-require-dbt-version: ">=0.18.0"
+require-dbt-version: ">=0.17.0"
 config-version: 2
 
 source-paths: ["models"]
