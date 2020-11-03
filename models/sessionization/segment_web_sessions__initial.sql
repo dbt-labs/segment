@@ -83,7 +83,12 @@ agg as (
         last_value({{key}}) over ({{window_clause}}) as {{value}}{% if not loop.last %},{% endif %}
         {% endfor %}
 
-    from pageviews_sessionized
+    from {{ ref('segment_web_page_views__sessionized') }}
+    {% if is_incremental() %}
+        where session_id in (
+          select distinct session_id from pageviews_sessionized
+        )
+    {% endif %}
 
 ),
 
