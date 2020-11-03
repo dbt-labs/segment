@@ -46,18 +46,25 @@ with pageviews_sessionized as (
 
     select * from {{ref('segment_web_page_views__sessionized')}}
 
-    {% if is_incremental() %}
-        where cast(tstamp as datetime) > (
-          select
-            {{ dbt_utils.dateadd(
-                'hour',
-                -var('segment_sessionization_trailing_window'),
-                'max(session_start_tstamp)'
-            ) }}
-          from {{ this }})
-    {% endif %}
+),
+
+{% if is_incremental() %}
+
+incremental_pageviews_sessionized as (
+
+  select * from pageviews_sessionized
+    where cast(tstamp as datetime) > (
+        select
+          {{ dbt_utils.dateadd(
+              'hour',
+              -var('segment_sessionization_trailing_window'),
+              'max(session_start_tstamp)'
+          ) }}
+        from {{ this }})
 
 ),
+    
+{% endif %}
 
 referrer_mapping as (
 
@@ -84,6 +91,11 @@ agg as (
         {% endfor %}
 
     from pageviews_sessionized
+    {% if is_incremental() %}
+        where session_id in (
+          select distinct session_id from incremental_pageviews_sessionized
+        )
+    {% endif %}
 
 ),
 
