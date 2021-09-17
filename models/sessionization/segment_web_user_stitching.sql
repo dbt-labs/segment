@@ -12,7 +12,7 @@ mapping as (
 
         anonymous_id,
 
-        last_value(user_id ignore nulls) over (
+        last_value(user_id {% if target.type != "postgres" -%} ignore nulls {%- endif -%}) over (
             partition by anonymous_id
             order by tstamp
             rows between unbounded preceding and unbounded following
