@@ -31,7 +31,7 @@ with sessions as (
     select * from {{ref('segment_web_sessions__stitched')}}
 
     {% if is_incremental() %}
-    where cast(session_start_tstamp as datetime) > {{sessionization_cutoff}}
+    where cast(session_start_tstamp as {% if target.type == "postgres" -%} timestamp {% else -%} datetime {%- endif -%}) > {{sessionization_cutoff}}
     {% endif %}
 
 ),
@@ -46,7 +46,7 @@ agg as (
     from {{this}}
 
     -- only include sessions that are not going to be resessionized in this run
-    where cast(session_start_tstamp as datetime) <= {{sessionization_cutoff}}
+    where cast(session_start_tstamp as {% if target.type == "postgres" -%} timestamp {% else -%} datetime {%- endif -%}) <= {{sessionization_cutoff}}
 
     group by 1
 

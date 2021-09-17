@@ -47,7 +47,7 @@ with pageviews_sessionized as (
     select * from {{ref('segment_web_page_views__sessionized')}}
 
     {% if is_incremental() %}
-        where cast(tstamp as datetime) > (
+        where cast(tstamp as {% if target.type == "postgres" -%} timestamp {% else -%} datetime {%- endif -%}) > (
           select
             {{ dbt_utils.dateadd(
                 'hour',

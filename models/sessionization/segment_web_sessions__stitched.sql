@@ -11,7 +11,7 @@ with sessions as (
     select * from {{ref('segment_web_sessions__initial')}}
 
     {% if is_incremental() %}
-        where cast(session_start_tstamp as datetime) > (
+        where cast(session_start_tstamp as {% if target.type == "postgres" -%} timestamp {% else -%} datetime {%- endif -%}) > (
           select
             {{ dbt_utils.dateadd(
                 'hour',
