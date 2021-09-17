@@ -37,3 +37,14 @@ integration_tests:
       project: "{{ env_var('BIGQUERY_TEST_DATABASE') }}"
       schema: segment_integration_tests_bigquery
       threads: 1
+
+    postgres:
+      type: postgres
+      host: "{{ env_var('POSTGRES_TEST_HOST') }}"
+      user: "{{ env_var('POSTGRES_TEST_USER') }}"
+      pass: "{{ env_var('POSTGRES_TEST_PASS') }}"
+      dbname: "{{ env_var('POSTGRES_TEST_DBNAME') }}"
+      port: "{{ env_var('POSTGRES_TEST_PORT') | as_number }}"
+      schema: segment_integration_tests_postgres
+      threads: 1
+      keepalives_idle: 0
