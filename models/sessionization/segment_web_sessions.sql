@@ -1,20 +1,32 @@
-
 {{ config(
     materialized = 'incremental',
     unique_key = 'session_id',
     sort = 'session_start_tstamp',
-    dist = 'session_id'
+    partition_by = {'field': 'session_start_tstamp', 'data_type': 'timestamp'},
+    dist = 'session_id',
+    cluster_by = 'session_id'
     )}}
 
 {% set sessionization_cutoff %}
 (
+    {% if target.type == 'bigquery'%}
+    select 
+        timestamp_sub(
+            max(session_start_tstamp), 
+            interval {{var('segment_sessionization_trailing_window')}} hour
+            )
+    from {{ this }}
+
+    {% else %}
     select
         {{ dbt_utils.dateadd(
             'hour',
             -var('segment_sessionization_trailing_window'),
             'max(session_start_tstamp)'
         ) }}
-    from {{this}}
+    from {{ this }}
+
+    {% endif %}
 )
 {% endset %}
 
@@ -31,7 +43,7 @@ with sessions as (
     select * from {{ref('segment_web_sessions__stitched')}}
 
     {% if is_incremental() %}
-    where cast(session_start_tstamp as datetime) > {{sessionization_cutoff}}
+    where session_start_tstamp > {{sessionization_cutoff}}
     {% endif %}
 
 ),
@@ -46,7 +58,7 @@ agg as (
     from {{this}}
 
     -- only include sessions that are not going to be resessionized in this run
-    where cast(session_start_tstamp as datetime) <= {{sessionization_cutoff}}
+    where session_start_tstamp <= {{sessionization_cutoff}}
 
     group by 1
 
