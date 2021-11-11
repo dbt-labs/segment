@@ -34,3 +34,7 @@ vars:
   # using this package on top of unioned Segment sources, as you can then
   # pass through a column indicating which source the data is from.
   segment_pass_through_columns: []
+
+  # BigQuery only: partition granularity for partition_by clause
+  # options can be found here: https://docs.getdbt.com/reference/resource-configs/bigquery-configs#partition-clause
+  segment_bigquery_partition_granularity: "day"

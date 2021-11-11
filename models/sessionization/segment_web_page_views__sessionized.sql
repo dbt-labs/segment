@@ -2,7 +2,7 @@
     materialized = 'incremental',
     unique_key = 'page_view_id',
     sort = 'tstamp',
-    partition_by = {'field': 'tstamp', 'data_type': 'timestamp'},
+    partition_by = {'field': 'tstamp', 'data_type': 'timestamp', 'granularity': var('segment_bigquery_partition_granularity')},
     dist = 'page_view_id',
     cluster_by = 'page_view_id'
     )}}
