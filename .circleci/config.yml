@@ -4,7 +4,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.3-stretch
+      - image: cimg/python:3.9.9
       - image: circleci/postgres:9.6.5-alpine-ram
 
     steps:
@@ -21,8 +21,8 @@ jobs:
       - run:
           name: "Setup dbt"
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
+            python3 -m venv dbt_venv
+            . dbt_venv/bin/activate
 
             pip install --upgrade pip setuptools
             pip install --pre dbt
@@ -33,24 +33,24 @@ jobs:
       - run:
           name: "Run Tests - Redshift"
           command: |
-            . venv/bin/activate
+            . dbt_venv/bin/activate
             echo `pwd`
             cd integration_tests
-            dbt --warn-error deps
-            dbt --warn-error seed --target redshift
-            dbt --warn-error run --target redshift --full-refresh
-            dbt --warn-error run --target redshift
+            dbt deps
+            dbt seed --target redshift
+            dbt run --target redshift --full-refresh
+            dbt run --target redshift
 
       - run:
           name: "Run Tests - Snowflake"
           command: |
-            . venv/bin/activate
+            . dbt_venv/bin/activate
             echo `pwd`
             cd integration_tests
-            dbt --warn-error deps
-            dbt --warn-error seed --target snowflake
-            dbt --warn-error run --target snowflake --full-refresh
-            dbt --warn-error run --target snowflake
+            dbt deps
+            dbt seed --target snowflake
+            dbt run --target snowflake --full-refresh
+            dbt run --target snowflake
 
       - run:
           name: "Run Tests - BigQuery"
@@ -58,15 +58,15 @@ jobs:
               BIGQUERY_SERVICE_KEY_PATH: "/home/circleci/bigquery-service-key.json"
 
           command: |
-            . venv/bin/activate
+            . dbt_venv/bin/activate
             echo `pwd`
             cd integration_tests
-            dbt --warn-error deps
-            dbt --warn-error seed --target bigquery
-            dbt --warn-error run --target bigquery --full-refresh
-            dbt --warn-error run --target bigquery
+            dbt deps
+            dbt seed --target bigquery
+            dbt run --target bigquery --full-refresh
+            dbt run --target bigquery
 
       - save_cache:
           key: deps1-{{ .Branch }}
           paths:
-            - "venv"
+            - "dbt_venv"
