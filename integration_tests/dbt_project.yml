@@ -2,6 +2,8 @@ name: 'segment_integration_tests'
 version: '1.0'
 config-version: 2
 
+seed-paths: ["seeds"]
+
 profile: 'integration_tests'
 
 vars:

@@ -1,18 +1,18 @@
 name: 'segment'
-version: '0.6.0'
-require-dbt-version: [">=0.17.0", "<1.1.0"]
+version: '0.7.0'
+require-dbt-version: [">=1.0.0", "<2.0.0"]
 config-version: 2
 
-source-paths: ["models"]
-analysis-paths: ["analysis"]
+model-paths: ["models"]
+analysis-paths: ["analyses"]
 test-paths: ["tests"]
-data-paths: ["data"]
+seed-paths: ["seeds"]
 macro-paths: ["macros"]
 
 target-path: "target"
 clean-targets:
   - "target"
-  - "dbt_modules"
+  - "dbt_packages"
 
 vars:
   # location of raw data table
