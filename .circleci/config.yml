@@ -31,6 +31,18 @@ jobs:
             cp integration_tests/ci/sample.profiles.yml ~/.dbt/profiles.yml
 
       - run:
+          name: "Run Tests - Postgres"
+          command: |
+            . dbt_venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt --warn-error deps
+            dbt --warn-error seed --target postgres
+            dbt --warn-error run --target postgres --full-refresh
+            dbt --warn-error run --target postgres
+
+
+      - run:
           name: "Run Tests - Redshift"
           command: |
             . dbt_venv/bin/activate
