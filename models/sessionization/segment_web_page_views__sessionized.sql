@@ -22,7 +22,7 @@ with pageviews as (
     where anonymous_id in (
         select distinct anonymous_id
         from {{ref('segment_web_page_views')}}
-        where cast(tstamp as datetime) >= (
+        where cast(tstamp as {% if target.type == "postgres" -%} timestamp {% else -%} datetime {%- endif -%}) >= (
           select
             {{ dbt_utils.dateadd(
                 'hour',
