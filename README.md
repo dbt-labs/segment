@@ -41,6 +41,7 @@ vars:
     segment_sessionization_trailing_window: 3
     segment_inactivity_cutoff: 30 * 60
     segment_pass_through_columns: []
+    segment_bigquery_partition_granularity: 'day' # BigQuery only: partition granularity for `partition_by` config
 
 ```
 5. Execute `dbt seed` -- this project includes a CSV that must be seeded for it
