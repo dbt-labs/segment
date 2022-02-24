@@ -12,28 +12,9 @@ with sessions as (
     select * from {{ref('segment_web_sessions__initial')}}
 
     {% if is_incremental() %}
-
-        {% if target.type == 'bigquery'%}
-            where session_start_tstamp > (
-            select 
-                timestamp_sub(
-                    max(session_start_tstamp), 
-                    interval {{var('segment_sessionization_trailing_window')}} hour
-                    )
-            from {{ this }} )
-
-        {% else %}
-            where session_start_tstamp > (
-            select
-                {{ dbt_utils.dateadd(
-                    'hour',
-                    -var('segment_sessionization_trailing_window'),
-                    'max(session_start_tstamp)'
-                ) }}
-            from {{ this }} )
-
-        {% endif %}
-
+    {{
+        generate_sessionization_incremental_filter( this, 'session_start_tstamp', 'session_start_tstamp' )
+    }}
     {% endif %}
 
 ),

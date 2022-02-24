@@ -7,29 +7,6 @@
     cluster_by = 'session_id'
     )}}
 
-{% set sessionization_cutoff %}
-(
-    {% if target.type == 'bigquery'%}
-    select 
-        timestamp_sub(
-            max(session_start_tstamp), 
-            interval {{var('segment_sessionization_trailing_window')}} hour
-            )
-    from {{ this }}
-
-    {% else %}
-    select
-        {{ dbt_utils.dateadd(
-            'hour',
-            -var('segment_sessionization_trailing_window'),
-            'max(session_start_tstamp)'
-        ) }}
-    from {{ this }}
-
-    {% endif %}
-)
-{% endset %}
-
 {#
 Window functions are challenging to make incremental. This approach grabs
 existing values from the existing table and then adds the value of session_number
@@ -43,7 +20,9 @@ with sessions as (
     select * from {{ref('segment_web_sessions__stitched')}}
 
     {% if is_incremental() %}
-    where session_start_tstamp > {{sessionization_cutoff}}
+    {{
+        generate_sessionization_incremental_filter( this, 'session_start_tstamp', 'session_start_tstamp' )
+    }}
     {% endif %}
 
 ),
@@ -58,7 +37,9 @@ agg as (
     from {{this}}
 
     -- only include sessions that are not going to be resessionized in this run
-    where session_start_tstamp <= {{sessionization_cutoff}}
+    {{
+        generate_sessionization_incremental_filter( this, 'session_start_tstamp', 'session_start_tstamp' )
+    }}
 
     group by 1
 

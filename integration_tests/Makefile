@@ -12,5 +12,19 @@ test-snowflake:
 	dbt run --target snowflake
 	dbt test --target snowflake
 
-test-all: test-redshift test-snowflake
+test-bigquery:
+	dbt deps
+	dbt seed --target bigquery
+	dbt run --target bigquery --full-refresh
+	dbt run --target bigquery
+	dbt test --target bigquery
+
+test-postgres:
+	dbt deps
+	dbt seed --target postgres
+	dbt run --target postgres --full-refresh
+	dbt run --target postgres
+	dbt test --target postgres
+
+test-all: test-redshift test-snowflake test-bigquery test-postgres
 	echo "Completed successfully"

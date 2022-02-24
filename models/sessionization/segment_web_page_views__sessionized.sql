@@ -24,27 +24,9 @@ with pageviews as (
     where anonymous_id in (
         select distinct anonymous_id
         from {{ref('segment_web_page_views')}}
-
-        {% if target.type == 'bigquery'%}
-            where tstamp > (
-            select 
-                timestamp_sub(
-                    max(tstamp), 
-                    interval {{var('segment_sessionization_trailing_window')}} hour
-                    )
-            from {{ this }} )
-
-        {% else %}
-            where tstamp > (
-            select
-                {{ dbt_utils.dateadd(
-                    'hour',
-                    -var('segment_sessionization_trailing_window'),
-                    'max(tstamp)'
-                ) }}
-            from {{ this }} )
-
-        {% endif %}
+        {{
+            generate_sessionization_incremental_filter( this, 'tstamp', 'tstamp' )
+        }}
     )
     {% endif %}
 

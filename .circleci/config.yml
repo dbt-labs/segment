@@ -4,7 +4,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.3-stretch
+      - image: cimg/python:3.9.9
       - image: circleci/postgres:9.6.5-alpine-ram
 
     steps:
@@ -21,19 +21,37 @@ jobs:
       - run:
           name: "Setup dbt"
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
+            python3 -m venv dbt_venv
+            . dbt_venv/bin/activate
 
             pip install --upgrade pip setuptools
-            pip install --pre dbt
+            pip install --pre dbt-core dbt-postgres dbt-redshift dbt-snowflake dbt-bigquery
 
             mkdir -p ~/.dbt
             cp integration_tests/ci/sample.profiles.yml ~/.dbt/profiles.yml
 
       - run:
+          name: "Run Tests - Postgres"
+          environment:
+            POSTGRES_TEST_HOST: localhost
+            POSTGRES_TEST_USER: root
+            POSTGRES_TEST_PASS: ''
+            POSTGRES_TEST_PORT: 5432
+            POSTGRES_TEST_DBNAME: circle_test
+          command: |
+            . dbt_venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt --warn-error deps
+            dbt --warn-error seed --target postgres
+            dbt --warn-error run --target postgres --full-refresh
+            dbt --warn-error run --target postgres
+
+
+      - run:
           name: "Run Tests - Redshift"
           command: |
-            . venv/bin/activate
+            . dbt_venv/bin/activate
             echo `pwd`
             cd integration_tests
             dbt --warn-error deps
@@ -44,7 +62,7 @@ jobs:
       - run:
           name: "Run Tests - Snowflake"
           command: |
-            . venv/bin/activate
+            . dbt_venv/bin/activate
             echo `pwd`
             cd integration_tests
             dbt --warn-error deps
@@ -58,7 +76,7 @@ jobs:
               BIGQUERY_SERVICE_KEY_PATH: "/home/circleci/bigquery-service-key.json"
 
           command: |
-            . venv/bin/activate
+            . dbt_venv/bin/activate
             echo `pwd`
             cd integration_tests
             dbt --warn-error deps
@@ -69,4 +87,4 @@ jobs:
       - save_cache:
           key: deps1-{{ .Branch }}
           paths:
-            - "venv"
+            - "dbt_venv"
