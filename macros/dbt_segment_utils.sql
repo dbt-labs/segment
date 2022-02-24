@@ -16,7 +16,7 @@
             {{ dbt_utils.dateadd(
                 'hour',
                 -var('segment_sessionization_trailing_window'),
-                'max({{ max_tstamp }})'
+                'max(' ~ max_tstamp ~ ')'
             ) }}
         from {{ merge_target }} 
         )
@@ -27,7 +27,7 @@
             {{ dbt_utils.dateadd(
                 'hour',
                 -var('segment_sessionization_trailing_window'),
-                'max({{ max_tstamp }})'
+                'max(' ~ max_tstamp ~ ')'
             ) }}
         from {{ merge_target }} 
         )
