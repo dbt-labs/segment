@@ -25,7 +25,7 @@ with pageviews as (
         select distinct anonymous_id
         from {{ref('segment_web_page_views')}}
         {{
-            generate_sessionization_incremental_filter( this, 'tstamp', 'tstamp' )
+            generate_sessionization_incremental_filter( this, 'tstamp', 'tstamp', '>' )
         }}
     )
     {% endif %}

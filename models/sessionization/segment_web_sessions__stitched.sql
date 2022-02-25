@@ -13,7 +13,7 @@ with sessions as (
 
     {% if is_incremental() %}
     {{
-        generate_sessionization_incremental_filter( this, 'session_start_tstamp', 'session_start_tstamp' )
+        generate_sessionization_incremental_filter( this, 'session_start_tstamp', 'session_start_tstamp', '>' )
     }}
     {% endif %}
 

@@ -21,7 +21,7 @@ with sessions as (
 
     {% if is_incremental() %}
     {{
-        generate_sessionization_incremental_filter( this, 'session_start_tstamp', 'session_start_tstamp' )
+        generate_sessionization_incremental_filter( this, 'session_start_tstamp', 'session_start_tstamp', '>' )
     }}
     {% endif %}
 
@@ -38,7 +38,7 @@ agg as (
 
     -- only include sessions that are not going to be resessionized in this run
     {{
-        generate_sessionization_incremental_filter( this, 'session_start_tstamp', 'session_start_tstamp' )
+        generate_sessionization_incremental_filter( this, 'session_start_tstamp', 'session_start_tstamp', '<=' )
     }}
 
     group by 1
