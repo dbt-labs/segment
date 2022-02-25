@@ -1,3 +1,16 @@
+# segment v0.8.0
+## New Features
+- Postgres Support ([#69](https://github.com/dbt-labs/segment/issues/69), [#70](https://github.com/dbt-labs/segment/pull/70))
+
+## Improvements
+- Significantly improved BigQuery performance ([#72](https://github.com/dbt-labs/segment/issues/72), [#73](https://github.com/dbt-labs/segment/pull/73))
+- Deduplication of source page views ([#76](https://github.com/dbt-labs/segment/pull/76))
+
+Contributors: 
+- [shippy](https://github.com/shippy) (#70)
+- [rjh336](https://github.com/rjh336) (#73)
+- [MarkMacArdle](https://github.com/MarkMacArdle) (#76)
+
 # segment v0.7.0
 
 This release supports any version (minor and patch) of v1, which means far less need for compatibility releases in the future.
