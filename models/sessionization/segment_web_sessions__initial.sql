@@ -2,7 +2,9 @@
     materialized = 'incremental',
     unique_key = 'session_id',
     sort = 'session_start_tstamp',
-    dist = 'session_id'
+    partition_by = {'field': 'session_start_tstamp', 'data_type': 'timestamp', 'granularity': var('segment_bigquery_partition_granularity')},
+    dist = 'session_id',
+    cluster_by = 'session_id'
     )}}
 
 {% set partition_by = "partition by session_id" %}
@@ -47,14 +49,9 @@ with pageviews_sessionized as (
     select * from {{ref('segment_web_page_views__sessionized')}}
 
     {% if is_incremental() %}
-        where cast(tstamp as {% if target.type == "postgres" -%} timestamp {% else -%} datetime {%- endif -%}) > (
-          select
-            {{ dbt_utils.dateadd(
-                'hour',
-                -var('segment_sessionization_trailing_window'),
-                'max(session_start_tstamp)'
-            ) }}
-          from {{ this }})
+    {{
+        generate_sessionization_incremental_filter( this, 'tstamp', 'session_start_tstamp' )
+    }}
     {% endif %}
 
 ),

@@ -1,22 +1,11 @@
-
 {{ config(
     materialized = 'incremental',
     unique_key = 'session_id',
     sort = 'session_start_tstamp',
-    dist = 'session_id'
+    partition_by = {'field': 'session_start_tstamp', 'data_type': 'timestamp', 'granularity': var('segment_bigquery_partition_granularity')},
+    dist = 'session_id',
+    cluster_by = 'session_id'
     )}}
-
-{% set sessionization_cutoff %}
-(
-    select
-        {{ dbt_utils.dateadd(
-            'hour',
-            -var('segment_sessionization_trailing_window'),
-            'max(session_start_tstamp)'
-        ) }}
-    from {{this}}
-)
-{% endset %}
 
 {#
 Window functions are challenging to make incremental. This approach grabs
@@ -31,7 +20,9 @@ with sessions as (
     select * from {{ref('segment_web_sessions__stitched')}}
 
     {% if is_incremental() %}
-    where cast(session_start_tstamp as {% if target.type == "postgres" -%} timestamp {% else -%} datetime {%- endif -%}) > {{sessionization_cutoff}}
+    {{
+        generate_sessionization_incremental_filter( this, 'session_start_tstamp', 'session_start_tstamp' )
+    }}
     {% endif %}
 
 ),
@@ -46,7 +37,9 @@ agg as (
     from {{this}}
 
     -- only include sessions that are not going to be resessionized in this run
-    where cast(session_start_tstamp as {% if target.type == "postgres" -%} timestamp {% else -%} datetime {%- endif -%}) <= {{sessionization_cutoff}}
+    {{
+        generate_sessionization_incremental_filter( this, 'session_start_tstamp', 'session_start_tstamp' )
+    }}
 
     group by 1
 

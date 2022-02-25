@@ -2,14 +2,16 @@
     materialized = 'incremental',
     unique_key = 'page_view_id',
     sort = 'tstamp',
-    dist = 'page_view_id'
+    partition_by = {'field': 'tstamp', 'data_type': 'timestamp', 'granularity': var('segment_bigquery_partition_granularity')},
+    dist = 'page_view_id',
+    cluster_by = 'page_view_id'
     )}}
 
 {#
 the initial CTE in this model is unusually complicated; its function is to
 select all pageviews (for all time) for users who have pageviews since the
 model was most recently run. there are many window functions in this model so
-in order to appropriately calculate all of them we need each user's entire
+in order to appropriately calculate all of them we need each users entire
 page view history, but we only want to grab that for users who have page view
 events we need to calculate.
 #}
@@ -22,15 +24,10 @@ with pageviews as (
     where anonymous_id in (
         select distinct anonymous_id
         from {{ref('segment_web_page_views')}}
-        where cast(tstamp as {% if target.type == "postgres" -%} timestamp {% else -%} datetime {%- endif -%}) >= (
-          select
-            {{ dbt_utils.dateadd(
-                'hour',
-                -var('segment_sessionization_trailing_window'),
-                'max(tstamp)'
-            ) }}
-          from {{ this }})
-        )
+        {{
+            generate_sessionization_incremental_filter( this, 'tstamp', 'tstamp' )
+        }}
+    )
     {% endif %}
 
 ),
