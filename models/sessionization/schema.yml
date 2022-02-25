@@ -42,3 +42,7 @@ models:
         tests:
           - unique
           - not_null
+      - name: cast(blended_user_id as string) || cast(session_number as string)
+        description: 'Make sure session_number is not repeated for any given user'
+        tests:
+          - unique
