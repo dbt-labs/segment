@@ -1,10 +1,10 @@
-{% macro generate_sessionization_incremental_filter(merge_target, filter_tstamp, max_tstamp) %}
-    {{ return(adapter.dispatch('generate_sessionization_incremental_filter', 'segment') (merge_target, filter_tstamp, max_tstamp)) }}
+{% macro generate_sessionization_incremental_filter(merge_target, filter_tstamp, max_tstamp, operator) %}
+    {{ return(adapter.dispatch('generate_sessionization_incremental_filter', 'segment') (merge_target, filter_tstamp, max_tstamp, operator)) }}
 {% endmacro %}
 
 
-{% macro default__generate_sessionization_incremental_filter(merge_target, filter_tstamp, max_tstamp) %}
-    where {{ filter_tstamp }} >= (
+{% macro default__generate_sessionization_incremental_filter(merge_target, filter_tstamp, max_tstamp, operator) %}
+    where {{ filter_tstamp }} {{ operator }} (
         select
             {{ dbt_utils.dateadd(
                 'hour',
@@ -15,8 +15,8 @@
     )
 {%- endmacro -%}
 
-{% macro bigquery__generate_sessionization_incremental_filter(merge_target, filter_tstamp, max_tstamp) %}
-    where {{ filter_tstamp }} >= (
+{% macro bigquery__generate_sessionization_incremental_filter(merge_target, filter_tstamp, max_tstamp, operator) %}
+    where {{ filter_tstamp }} {{ operator }} (
         select 
             timestamp_sub(
                 max({{ max_tstamp }}), 
@@ -26,8 +26,8 @@
     )
 {%- endmacro -%}
 
-{% macro postgres__generate_sessionization_incremental_filter(merge_target, filter_tstamp, max_tstamp) %}
-    where cast({{ filter_tstamp }} as timestamp) >= (
+{% macro postgres__generate_sessionization_incremental_filter(merge_target, filter_tstamp, max_tstamp, operator) %}
+    where cast({{ filter_tstamp }} as timestamp) {{ operator }} (
         select
             {{ dbt_utils.dateadd(
                 'hour',

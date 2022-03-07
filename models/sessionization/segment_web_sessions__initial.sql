@@ -50,7 +50,7 @@ with pageviews_sessionized as (
 
     {% if is_incremental() %}
     {{
-        generate_sessionization_incremental_filter( this, 'tstamp', 'session_start_tstamp' )
+        generate_sessionization_incremental_filter( this, 'tstamp', 'session_start_tstamp', '>' )
     }}
     {% endif %}
 
