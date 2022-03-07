@@ -1,3 +1,10 @@
+# segment v0.8.1
+## Fixes
+- Fix duplication of sources in incremental materializations ([#80](https://github.com/dbt-labs/segment/issues/80), [#81](https://github.com/dbt-labs/segment/pull/81))
+
+Contributors: 
+- [rjh336](https://github.com/rjh336) (#81)
+
 # segment v0.8.0
 ## New Features
 - Postgres Support ([#69](https://github.com/dbt-labs/segment/issues/69), [#70](https://github.com/dbt-labs/segment/pull/70))
