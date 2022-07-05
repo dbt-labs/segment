@@ -58,7 +58,7 @@ with pageviews_sessionized as (
 
 referrer_mapping as (
 
-    select * from {{ ref('referrer_mapping') }}
+    select * from {{ ref(var('segment_referrer_mapping_seed')) }}
 
 ),
 

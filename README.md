@@ -27,7 +27,7 @@ Similarly, if you need to union multiple sources, de-duplicate records, or filte
 out bad records, do this in an upstream model.
 
 4. Optionally configure extra parameters by adding them to your own `dbt_project.yml` file – see [dbt_project.yml](dbt_project.yml)
-for more details:
+   for more details:
 
 ```YAML
 # dbt_project.yml
@@ -42,10 +42,11 @@ vars:
     segment_inactivity_cutoff: 30 * 60
     segment_pass_through_columns: []
     segment_bigquery_partition_granularity: 'day' # BigQuery only: partition granularity for `partition_by` config
+    segment_referrer_mapping_seed: 'my_referrer_mapping' # Your custom referrer mapping seed. This is a CSV version of Snowplow's [referer parser database](https://github.com/snowplow-referer-parser/referer-parser)
 
 ```
 5. Execute `dbt seed` -- this project includes a CSV that must be seeded for it
-the package to run successfully.
+   the package to run successfully.
 6. Execute `dbt run` – the Segment models will get built as part of your run!
 
 ## Database support
