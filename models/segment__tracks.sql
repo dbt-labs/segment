@@ -1,5 +1,5 @@
 with tracks as (
-    select * from {{ var('segment__schema') }}.tracks
+    select * from {{ var('segment_tracks_table') }}
 )
 
 select * from tracks

@@ -3,6 +3,8 @@ version: '1.0.0'
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 config-version: 2
 
+profile: houseware_metrics
+
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
@@ -20,7 +22,10 @@ clean-targets:
 
 vars:
   # location of raw data table
-  segment_page_views_table: "{{ source(var('segment__schema'), 'pages') }}"
+  segment_page_views_table: "{{ source('segment', 'pages') }}"
+  segment_tracks_table: "{{ source('segment', 'tracks') }}"
+  segment_users_table: "{{ source('segment', 'users') }}"
+  segment_identifies_table: "{{ source('segment', 'identifies') }}"
   # number of trailing hours to re-sessionize for.
   # events can come in late and we want to still be able to incorporate
   # them into the definition of a session without needing a full refresh.

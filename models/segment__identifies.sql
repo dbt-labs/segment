@@ -1,5 +1,5 @@
 with identifies as (
-    select * from {{ var('segment__schema') }}.identifies
+    select * from {{ var('segment_identifies_table') }}
 )
 
 select * from identifies
