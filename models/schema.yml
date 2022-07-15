@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+ - name: "{{ var('segment__schema') }}"
+   database: "{{ var('segment__source') }}"
+   tables: 
+    - name: pages

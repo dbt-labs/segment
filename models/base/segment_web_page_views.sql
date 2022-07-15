@@ -8,7 +8,7 @@ row_numbering as (
 
     select
         *,
-        row_number() over (partition by id order by received_at asc) as row_num
+        row_number() over (partition by message_id order by received_at asc) as row_num
     from source
 
 ),
@@ -26,7 +26,7 @@ renamed as (
 
     select
 
-        id as page_view_id,
+        message_id as page_view_id,
         anonymous_id,
         user_id,
 
