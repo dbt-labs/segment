@@ -1,4 +1,4 @@
-name: 'dbt_segment_metrics'
+name: 'segment_metrics'
 version: '1.0.0'
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 config-version: 2
@@ -12,7 +12,7 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 
 models:
-  dbt_segment_metrics:
+  segment_metrics:
     +materialized: table
 
 target-path: "target"
