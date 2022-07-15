@@ -7,8 +7,8 @@
 
 select *
 from {{ metrics.metric(
-    metric_name='segment__monthly_average_session_time_seconds',
+    metric_name='segment__monthly_average_session_duration_seconds_by_referrer_source',
     grain='month',
-    dimensions=[],
+    dimensions=['referrer_source'],
     secondary_calculations=[]
 ) }}
