@@ -9,3 +9,452 @@ sources:
     - name: identifies
     - name: tracks
     - name: users
+
+models:
+  - name: segment__users
+        columns:
+          - name: message_id
+            description: ""
+          - name: anonymous_id
+            description: ""
+          - name: context_app_name
+            description: ""
+          - name: context_app_version
+            description: ""
+          - name: context_app_build
+            description: ""
+          - name: context_campaign_name
+            description: ""
+          - name: context_campaign_source
+            description: ""
+          - name: context_campaign_medium
+            description: ""
+          - name: context_campaign_term
+            description: ""
+          - name: context_campaign_content
+            description: ""
+          - name: context_device_id
+            description: ""
+          - name: context_device_manufacturer
+            description: ""
+          - name: context_device_model
+            description: ""
+          - name: context_device_name
+            description: ""
+          - name: context_device_type
+            description: ""
+          - name: context_device_version
+            description: ""
+          - name: context_ip
+            description: ""
+          - name: context_library_name
+            description: ""
+          - name: context_library_version
+            description: ""
+          - name: context_locale
+            description: ""
+          - name: context_network_bluetooth
+            description: ""
+          - name: context_network_carrier
+            description: ""
+          - name: context_network_cellular
+            description: ""
+          - name: context_network_wifi
+            description: ""
+          - name: context_location_city
+            description: ""
+          - name: context_location_country
+            description: ""
+          - name: context_location_latitude
+            description: ""
+          - name: context_location_longitude
+            description: ""
+          - name: context_location_region
+            description: ""
+          - name: context_location_speed
+            description: ""
+          - name: context_os_name
+            description: ""
+          - name: context_os_version
+            description: ""
+          - name: context_page_hash
+            description: ""
+          - name: context_page_path
+            description: ""
+          - name: context_page_referrer
+            description: ""
+          - name: context_page_search
+            description: ""
+          - name: context_page_title
+            description: ""
+          - name: context_page_url
+            description: ""
+          - name: context_referrer_id
+            description: ""
+          - name: context_referrer_type
+            description: ""
+          - name: context_referrer_name
+            description: ""
+          - name: context_referrer_url
+            description: ""
+          - name: context_referrer_link
+            description: ""
+          - name: context_screen_width
+            description: ""
+          - name: context_screen_height
+            description: ""
+          - name: context_screen_density
+            description: ""
+          - name: context_timezone
+            description: ""
+          - name: context_user_agent
+            description: ""
+          - name: project_id
+            description: ""
+          - name: received_at
+            description: ""
+          - name: sent_at
+            description: ""
+          - name: timestamp
+            description: ""
+          - name: type
+            description: ""
+          - name: version
+            description: ""
+          - name: user_id
+            description: ""
+          - name: address_street
+            description: ""
+          - name: address_city
+            description: ""
+          - name: address_state
+            description: ""
+          - name: address_postal_code
+            description: ""
+          - name: address_country
+            description: ""
+          - name: age
+            description: ""
+          - name: avatar
+            description: ""
+          - name: birthday
+            description: ""
+          - name: created_at
+            description: ""
+          - name: description
+            description: ""
+          - name: email
+            description: ""
+          - name: first_name
+            description: ""
+          - name: gender
+            description: ""
+          - name: last_name
+            description: ""
+          - name: phone
+            description: ""
+          - name: title
+            description: ""
+          - name: username
+            description: ""
+          - name: website
+            description: ""
+          - name: name
+            description: ""
+          - name: organization_id
+            description: ""
+          - name: id
+            description: ""
+          - name: organization_name
+            description: ""
+          - name: _fivetran_synced
+            description: ""
+- name: segment_web_page_views
+        columns:
+          - name: page_view_id
+            description: ""
+          - name: anonymous_id
+            description: ""
+          - name: user_id
+            description: ""
+          - name: received_at_tstamp
+            description: ""
+          - name: sent_at_tstamp
+            description: ""
+          - name: tstamp
+            description: ""
+          - name: page_url
+            description: ""
+          - name: page_url_host
+            description: ""
+          - name: page_url_path
+            description: ""
+          - name: page_title
+            description: ""
+          - name: page_url_query
+            description: ""
+          - name: referrer
+            description: ""
+          - name: referrer_host
+            description: ""
+          - name: utm_source
+            description: ""
+          - name: utm_medium
+            description: ""
+          - name: utm_campaign
+            description: ""
+          - name: utm_term
+            description: ""
+          - name: utm_content
+            description: ""
+          - name: gclid
+            description: ""
+          - name: ip
+            description: ""
+          - name: user_agent
+            description: ""
+          - name: device
+            description: ""
+          - name: device_category
+            description: ""
+
+- name: segment_web_page_views__sessionized
+        columns:
+          - name: page_view_id
+            description: ""
+          - name: anonymous_id
+            description: ""
+          - name: user_id
+            description: ""
+          - name: received_at_tstamp
+            description: ""
+          - name: sent_at_tstamp
+            description: ""
+          - name: tstamp
+            description: ""
+          - name: page_url
+            description: ""
+          - name: page_url_host
+            description: ""
+          - name: page_url_path
+            description: ""
+          - name: page_title
+            description: ""
+          - name: page_url_query
+            description: ""
+          - name: referrer
+            description: ""
+          - name: referrer_host
+            description: ""
+          - name: utm_source
+            description: ""
+          - name: utm_medium
+            description: ""
+          - name: utm_campaign
+            description: ""
+          - name: utm_term
+            description: ""
+          - name: utm_content
+            description: ""
+          - name: gclid
+            description: ""
+          - name: ip
+            description: ""
+          - name: user_agent
+            description: ""
+          - name: device
+            description: ""
+          - name: device_category
+            description: ""
+          - name: page_view_number
+            description: ""
+          - name: session_id
+            description: ""
+
+- name: segment_web_sessions
+        columns:
+          - name: anonymous_id
+            description: ""
+          - name: session_id
+            description: ""
+          - name: session_start_tstamp
+            description: ""
+          - name: session_end_tstamp
+            description: ""
+          - name: page_views
+            description: ""
+          - name: utm_source
+            description: ""
+          - name: utm_content
+            description: ""
+          - name: utm_medium
+            description: ""
+          - name: utm_campaign
+            description: ""
+          - name: utm_term
+            description: ""
+          - name: gclid
+            description: ""
+          - name: first_page_url
+            description: ""
+          - name: first_page_url_host
+            description: ""
+          - name: first_page_url_path
+            description: ""
+          - name: first_page_url_query
+            description: ""
+          - name: referrer
+            description: ""
+          - name: referrer_host
+            description: ""
+          - name: device
+            description: ""
+          - name: device_category
+            description: ""
+          - name: last_page_url
+            description: ""
+          - name: last_page_url_host
+            description: ""
+          - name: last_page_url_path
+            description: ""
+          - name: last_page_url_query
+            description: ""
+          - name: duration_in_s
+            description: ""
+          - name: duration_in_s_tier
+            description: ""
+          - name: referrer_medium
+            description: ""
+          - name: referrer_source
+            description: ""
+          - name: blended_user_id
+            description: ""
+          - name: session_number
+            description: ""
+
+- name: segment_web_sessions__initial
+        columns:
+          - name: session_id
+            description: ""
+          - name: anonymous_id
+            description: ""
+          - name: session_start_tstamp
+            description: ""
+          - name: session_end_tstamp
+            description: ""
+          - name: page_views
+            description: ""
+          - name: utm_source
+            description: ""
+          - name: utm_content
+            description: ""
+          - name: utm_medium
+            description: ""
+          - name: utm_campaign
+            description: ""
+          - name: utm_term
+            description: ""
+          - name: gclid
+            description: ""
+          - name: first_page_url
+            description: ""
+          - name: first_page_url_host
+            description: ""
+          - name: first_page_url_path
+            description: ""
+          - name: first_page_url_query
+            description: ""
+          - name: referrer
+            description: ""
+          - name: referrer_host
+            description: ""
+          - name: device
+            description: ""
+          - name: device_category
+            description: ""
+          - name: last_page_url
+            description: ""
+          - name: last_page_url_host
+            description: ""
+          - name: last_page_url_path
+            description: ""
+          - name: last_page_url_query
+            description: ""
+          - name: duration_in_s
+            description: ""
+          - name: duration_in_s_tier
+            description: ""
+          - name: referrer_medium
+            description: ""
+          - name: referrer_source
+            description: ""
+
+- name: segment_web_sessions__stitched
+        columns:
+          - name: anonymous_id
+            description: ""
+          - name: session_id
+            description: ""
+          - name: session_start_tstamp
+            description: ""
+          - name: session_end_tstamp
+            description: ""
+          - name: page_views
+            description: ""
+          - name: utm_source
+            description: ""
+          - name: utm_content
+            description: ""
+          - name: utm_medium
+            description: ""
+          - name: utm_campaign
+            description: ""
+          - name: utm_term
+            description: ""
+          - name: gclid
+            description: ""
+          - name: first_page_url
+            description: ""
+          - name: first_page_url_host
+            description: ""
+          - name: first_page_url_path
+            description: ""
+          - name: first_page_url_query
+            description: ""
+          - name: referrer
+            description: ""
+          - name: referrer_host
+            description: ""
+          - name: device
+            description: ""
+          - name: device_category
+            description: ""
+          - name: last_page_url
+            description: ""
+          - name: last_page_url_host
+            description: ""
+          - name: last_page_url_path
+            description: ""
+          - name: last_page_url_query
+            description: ""
+          - name: duration_in_s
+            description: ""
+          - name: duration_in_s_tier
+            description: ""
+          - name: referrer_medium
+            description: ""
+          - name: referrer_source
+            description: ""
+          - name: blended_user_id
+            description: ""
+
+- name: segment_web_user_stitching
+        columns:
+          - name: anonymous_id
+            description: ""
+          - name: user_id
+            description: ""
+          - name: first_seen_at
+            description: ""
+          - name: last_seen_at
+            description: ""
