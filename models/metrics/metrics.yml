@@ -36,7 +36,7 @@ metrics:
   dimensions: [referrer_source]
 
 - name: segment__daily_unique_users
-  label: Daily Unique Users
+  label: Segment Daily Unique Users
   model: ref('segment__users')
   description: Daily unique users recorded across your website and mobile applications. This is based on the Segment Identify API
   type: count_distinct
@@ -47,7 +47,7 @@ metrics:
   dimensions: []
 
 - name: segment__daily_unique_users_by_country
-  label: Daily Unique Users Segmented By Country
+  label: Segment Daily Unique Users Segmented By Country
   model: ref('segment__users')
   description: Daily unique users recorded across your website and mobile applications segmented by user's country derived from their location. This is based on the Segment Identify API
   type: count_distinct
@@ -58,7 +58,7 @@ metrics:
   dimensions: [context_location_country]
 
 - name: segment__daily_unique_users_by_country_and_city
-  label: Daily Unique Users Segmented By Country and City
+  label: Segment Daily Unique Users Segmented By Country and City
   model: ref('segment__users')
   description: Daily unique users recorded across your website and mobile applications segmented by user's country & city derived from their location. This is based on the Segment Identify API
   type: count_distinct
@@ -70,7 +70,7 @@ metrics:
 
 ## to do string operation on url -- cut the url after /
 - name: segment__daily_page_views
-  label: Daily Page Views
+  label: Segment Daily Page Views
   model: ref('segment__pages')
   description: Daily number of page views for your website
   type: count
@@ -81,7 +81,7 @@ metrics:
   dimensions: []
 
 - name: segment__daily_page_views_by_page_path
-  label: Daily Page Views Segmented By Page Path
+  label: Segment Daily Page Views Segmented By Page Path
   model: ref('segment__pages')
   description: Daily number of page views for your website segmented by page path
   type: count
@@ -92,7 +92,7 @@ metrics:
   dimensions: [context_page_path]
 
 - name: segment__monthly_event_count_by_event_type
-  label: Monthly Event Count Segmented By Event Type
+  label: Segment Monthly Event Count Segmented By Event Type
   model: ref('segment__tracks')
   description: Monthly count of events segmented by event type based on Segment's Track API
   type: count
@@ -103,7 +103,7 @@ metrics:
   dimensions: [event]
 
 - name: segment__monthly_unique_users
-  label: Monthly Unique Users
+  label: Segment Monthly Unique Users
   model: ref('segment__users')
   description: Monthly unique users recorded across your website and mobile applications. This is based on the Segment Identify API
   type: count_distinct
@@ -114,7 +114,7 @@ metrics:
   dimensions: []
   
 - name: segment__monthly_average_session_duration_seconds
-  label: Monthly Average Session Duration in Seconds 
+  label: Segment Monthly Average Session Duration in Seconds 
   model: ref('segment_web_sessions')
   description: Monthly average session duration in seconds. Sessionization is done on top of data from Segment's Page API
   type: average
@@ -125,7 +125,7 @@ metrics:
   dimensions: []
 
 - name: segment__monthly_average_session_duration_seconds_by_device_category
-  label: Monthly Average Session Duration in Seconds Segmented By Device Category 
+  label: Segment Monthly Average Session Duration in Seconds Segmented By Device Category 
   model: ref('segment_web_sessions')
   description: Monthly average session duration in seconds segmented by device category. Sessionization is done on top of data from Segment's Page API
   type: average
@@ -136,7 +136,7 @@ metrics:
   dimensions: [device_category]
 
 - name: segment__monthly_average_session_duration_seconds_by_referrer_source
-  label: Monthly Average Session Duration in Seconds Segmented By Referrer Source
+  label: Segment Monthly Average Session Duration in Seconds Segmented By Referrer Source
   model: ref('segment_web_sessions')
   description: Monthly average session duration in seconds segmented by source of the traffic. Sessionization is done on top of data from Segment's Page API
   type: average
@@ -147,7 +147,7 @@ metrics:
   dimensions: [referrer_source]
 
 - name: segment__daily_unique_visitors
-  label: Daily Unique Visitors
+  label: Segment Daily Unique Visitors
   model: ref('segment__pages')
   description: Daily number of unique visitors visiting your website. Visitors include anonymous users too
   type: count_distinct
@@ -159,7 +159,7 @@ metrics:
 
 
 - name: segment__daily_unique_visitors_by_country
-  label: Daily Unique Visitors Segmented By Country
+  label: Segment Daily Unique Visitors Segmented By Country
   model: ref('segment__pages')
   description: Daily number of unique visitors visiting your website segmented by user's country derived from their location. Visitors include anonymous users too
   type: count_distinct
@@ -170,7 +170,7 @@ metrics:
   dimensions: [context_location_country]
 
 - name: segment__daily_unique_visitors_by_country_and_city
-  label: Daily Unique Visitors By Segmented Country and City
+  label: Segment Daily Unique Visitors By Segmented Country and City
   model: ref('segment__pages')
   description: Daily number of unique visitors visiting your website segmented by user's country & city derived from their location. Visitors include anonymous users too
   type: count_distinct
