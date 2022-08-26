@@ -13,6 +13,17 @@ metrics:
   filters: []
   dimensions: []
 
+- name: segment__daily_number_of_sessions_by_page_path
+  label: Segment Daily Number of Sessions By Page Path
+  model: ref('segment_web_sessions')
+  description: Number of sessions daily segmented by page url
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [day]
+  filters: []
+  dimensions: [last_page_url_path]
+
 - name: segment__daily_number_of_sessions_by_device_category
   label: Segment Daily Number of Sessions By Device Category
   model: ref('segment_web_sessions')
