@@ -113,6 +113,17 @@ metrics:
   filters: []
   dimensions: [event]
 
+- name: segment__daily_event_count_by_event_type
+  label: Segment Daily Event Count Segmented By Event Type
+  model: ref('segment__tracks')
+  description: Daily count of events segmented by event type based on Segment's Track API
+  type: count
+  sql: event
+  timestamp: received_at
+  time_grains: [day]
+  filters: []
+  dimensions: [event]
+
 - name: segment__monthly_unique_users
   label: Segment Monthly Unique Users
   model: ref('segment__users')
@@ -123,9 +134,9 @@ metrics:
   time_grains: [month]
   filters: []
   dimensions: []
-  
+
 - name: segment__monthly_average_session_duration_seconds
-  label: Segment Monthly Average Session Duration in Seconds 
+  label: Segment Monthly Average Session Duration in Seconds
   model: ref('segment_web_sessions')
   description: Monthly average session duration in seconds. Sessionization is done on top of data from Segment's Page API
   type: average
@@ -136,7 +147,7 @@ metrics:
   dimensions: []
 
 - name: segment__monthly_average_session_duration_seconds_by_device_category
-  label: Segment Monthly Average Session Duration in Seconds Segmented By Device Category 
+  label: Segment Monthly Average Session Duration in Seconds Segmented By Device Category
   model: ref('segment_web_sessions')
   description: Monthly average session duration in seconds segmented by device category. Sessionization is done on top of data from Segment's Page API
   type: average
