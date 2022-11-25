@@ -58,7 +58,7 @@ renamed as (
         case
             when lower(context_user_agent) like '%android%' then 'Android'
             else replace(
-                {{ dbt_utils.split_part(dbt_utils.split_part('context_user_agent', "'('", 2), "' '", 1) }},
+                {{ split_part(split_part('context_user_agent', "'('", 2), "' '", 1) }},
                 ';', '')
         end as device
 
