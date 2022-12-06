@@ -6,7 +6,7 @@
 {% macro default__generate_sessionization_incremental_filter(merge_target, filter_tstamp, max_tstamp, operator) %}
     where {{ filter_tstamp }} {{ operator }} (
         select
-            {{ dbt_utils.dateadd(
+            {{ dbt.dateadd(
                 'hour',
                 -var('segment_sessionization_trailing_window'),
                 'max(' ~ max_tstamp ~ ')'
@@ -29,7 +29,7 @@
 {% macro postgres__generate_sessionization_incremental_filter(merge_target, filter_tstamp, max_tstamp, operator) %}
     where cast({{ filter_tstamp }} as timestamp) {{ operator }} (
         select
-            {{ dbt_utils.dateadd(
+            {{ dbt.dateadd(
                 'hour',
                 -var('segment_sessionization_trailing_window'),
                 'max(' ~ max_tstamp ~ ')'
