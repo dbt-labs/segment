@@ -77,7 +77,7 @@ diffed as (
 
     select
         *,
-        {{ dbt_utils.datediff('previous_tstamp', 'tstamp', 'second') }} as period_of_inactivity
+        {{ dbt.datediff('previous_tstamp', 'tstamp', 'second') }} as period_of_inactivity
     from lagged
 
 ),
@@ -127,7 +127,7 @@ session_ids as (
 
         {{dbt_utils.star(ref('segment_web_page_views'))}},
         page_view_number,
-        {{dbt_utils.surrogate_key(['anonymous_id', 'session_number'])}} as session_id
+        {{dbt_utils.generate_surrogate_key(['anonymous_id', 'session_number'])}} as session_id
 
     from session_numbers
 
