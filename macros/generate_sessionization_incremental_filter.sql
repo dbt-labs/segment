@@ -1,5 +1,5 @@
 {% macro generate_sessionization_incremental_filter(merge_target, filter_tstamp, max_tstamp, operator) %}
-    {{ return(adapter.dispatch('generate_sessionization_incremental_filter', 'segment') (merge_target, filter_tstamp, max_tstamp, operator)) }}
+    {{ return(adapter.dispatch('generate_sessionization_incremental_filter', 'dbt_segment') (merge_target, filter_tstamp, max_tstamp, operator)) }}
 {% endmacro %}
 
 
