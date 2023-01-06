@@ -93,7 +93,7 @@ workflows:
   version: 2
   test-all:
     jobs:
-      - build
+      - build:
           context:
             - profile-redshift
             - profile-snowflake
