@@ -10,6 +10,10 @@ jobs:
     steps:
       - checkout
 
+      # fleetio note:
+      # the section below was written when dbt labs owned the package and supported bigquery and redshift
+      # we don't have test environments for redshift and bigquery, but we wanted to keep this in case we can support it in the future
+
       # - run:
       #     run: setup_creds
       #     command: |
