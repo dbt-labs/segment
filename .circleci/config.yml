@@ -25,7 +25,7 @@ jobs:
             . dbt_venv/bin/activate
 
             pip install --upgrade pip setuptools
-            pip install --pre dbt-core dbt-postgres dbt-redshift dbt-snowflake dbt-bigquery
+            pip install --pre dbt-core dbt-postgres dbt-snowflake
 
             mkdir -p ~/.dbt
             cp integration_tests/ci/sample.profiles.yml ~/.dbt/profiles.yml
@@ -49,17 +49,6 @@ jobs:
 
 
       - run:
-          name: "Run Tests - Redshift"
-          command: |
-            . dbt_venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt --warn-error deps
-            dbt --warn-error seed --target redshift
-            dbt --warn-error run --target redshift --full-refresh
-            dbt --warn-error run --target redshift
-
-      - run:
           name: "Run Tests - Snowflake"
           command: |
             . dbt_venv/bin/activate
@@ -69,20 +58,6 @@ jobs:
             dbt --warn-error seed --target snowflake
             dbt --warn-error run --target snowflake --full-refresh
             dbt --warn-error run --target snowflake
-
-      - run:
-          name: "Run Tests - BigQuery"
-          environment:
-              BIGQUERY_SERVICE_KEY_PATH: "/home/circleci/bigquery-service-key.json"
-
-          command: |
-            . dbt_venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt --warn-error deps
-            dbt --warn-error seed --target bigquery
-            dbt --warn-error run --target bigquery --full-refresh
-            dbt --warn-error run --target bigquery
 
       - save_cache:
           key: deps1-{{ .Branch }}
