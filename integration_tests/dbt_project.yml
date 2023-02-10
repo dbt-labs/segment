@@ -7,8 +7,8 @@ seed-paths: ["seeds"]
 profile: 'integration_tests'
 
 vars:
-  segment:
+  dbt_segment:
     segment_page_views_table: "{{ ref('example_segment_pages') }}"
 
 seeds:
-  +quote_columns: false
+  +quote_columns: "{{ true if target.type in ('redshift','postgres') else false }}"

@@ -1,4 +1,4 @@
-> ⛔🏚️ This package is no longer developed or maintained by dbt Labs. If you're interested in forking/adopting it, reach out in #package-ecosystem on dbt Slack.
+> ⛔🏚️ This package is not officially related to Segment and is maintained by [Fleetio](https://fleetio.com). CI jobs run on PRs will only test for postgres compatibility. We're working on setting up a service account to support tests for Snowflake. Please submit an issue for any bugs/feature requests related to Redshift or BigQuery and we'll figure out how to help!
 
 # dbt-segment
 This [dbt package](https://docs.getdbt.com/docs/package-management):
@@ -54,4 +54,4 @@ the package to run successfully.
 This package has been tested on Redshift, Snowflake, BigQuery, and Postgres.
 
 ### Contributing
-Additional contributions to this repo are very welcome! Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package. All PRs should only include functionality that is contained within all Segment deployments; no implementation-specific details should be included.
+Additional contributions to this repo are very welcome! Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package. All PRs should only include functionality that is contained within all Segment deployments; no implementation-specific details should be included. CI jobs run on PRs will only test for postgres compatibility. 

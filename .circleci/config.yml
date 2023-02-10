@@ -10,10 +10,16 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          run: setup_creds
-          command: |
-            echo $BIGQUERY_SERVICE_ACCOUNT_JSON > ${HOME}/bigquery-service-key.json
+      # fleetio note:
+      # the section below was written when dbt labs owned the package and supported bigquery and redshift
+      # we don't have test environments for redshift and bigquery, but we wanted to keep this in case we can support it in the future
+      # we're working on setting up a snowflake service account to use for the snowflake test, but for now we'll only run the CI job for postgres
+
+      # - run:
+      #     run: setup_creds
+      #     command: |
+      #       echo $BIGQUERY_SERVICE_ACCOUNT_JSON > ${HOME}/bigquery-service-key.json
+            
 
       - restore_cache:
           key: deps1-{{ .Branch }}
@@ -25,7 +31,7 @@ jobs:
             . dbt_venv/bin/activate
 
             pip install --upgrade pip setuptools
-            pip install --pre dbt-core dbt-postgres dbt-redshift dbt-snowflake dbt-bigquery
+            pip install --pre dbt-core dbt-postgres dbt-snowflake
 
             mkdir -p ~/.dbt
             cp integration_tests/ci/sample.profiles.yml ~/.dbt/profiles.yml
@@ -46,43 +52,43 @@ jobs:
             dbt --warn-error seed --target postgres
             dbt --warn-error run --target postgres --full-refresh
             dbt --warn-error run --target postgres
+      
+      # - run:
+      #     name: "Run Tests - Redshift"
+      #     command: |
+      #       . dbt_venv/bin/activate
+      #       echo `pwd`
+      #       cd integration_tests
+      #       dbt --warn-error deps
+      #       dbt --warn-error seed --target redshift
+      #       dbt --warn-error run --target redshift --full-refresh
+      #       dbt --warn-error run --target redshift
+
+      # - run:
+      #     name: "Run Tests - BigQuery"
+      #     environment:
+      #         BIGQUERY_SERVICE_KEY_PATH: "/home/circleci/bigquery-service-key.json"
+
+      #     command: |
+      #       . dbt_venv/bin/activate
+      #       echo `pwd`
+      #       cd integration_tests
+      #       dbt --warn-error deps
+      #       dbt --warn-error seed --target bigquery
+      #       dbt --warn-error run --target bigquery --full-refresh
+      #       dbt --warn-error run --target bigquery      
 
 
-      - run:
-          name: "Run Tests - Redshift"
-          command: |
-            . dbt_venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt --warn-error deps
-            dbt --warn-error seed --target redshift
-            dbt --warn-error run --target redshift --full-refresh
-            dbt --warn-error run --target redshift
-
-      - run:
-          name: "Run Tests - Snowflake"
-          command: |
-            . dbt_venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt --warn-error deps
-            dbt --warn-error seed --target snowflake
-            dbt --warn-error run --target snowflake --full-refresh
-            dbt --warn-error run --target snowflake
-
-      - run:
-          name: "Run Tests - BigQuery"
-          environment:
-              BIGQUERY_SERVICE_KEY_PATH: "/home/circleci/bigquery-service-key.json"
-
-          command: |
-            . dbt_venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt --warn-error deps
-            dbt --warn-error seed --target bigquery
-            dbt --warn-error run --target bigquery --full-refresh
-            dbt --warn-error run --target bigquery
+      # - run:
+      #     name: "Run Tests - Snowflake"
+      #     command: |
+      #       . dbt_venv/bin/activate
+      #       echo `pwd`
+      #       cd integration_tests
+      #       dbt --warn-error deps
+      #       dbt --warn-error seed --target snowflake
+      #       dbt --warn-error run --target snowflake --full-refresh
+      #       dbt --warn-error run --target snowflake
 
       - save_cache:
           key: deps1-{{ .Branch }}
