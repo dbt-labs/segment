@@ -52,6 +52,3 @@ the package to run successfully.
 
 ## Database support
 This package has been tested on Redshift, Snowflake, BigQuery, and Postgres.
-
-### Contributing
-Additional contributions to this repo are very welcome! Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package. All PRs should only include functionality that is contained within all Segment deployments; no implementation-specific details should be included.
