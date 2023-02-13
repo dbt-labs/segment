@@ -1,4 +1,4 @@
-> ⛔🏚️ This package is no longer developed or maintained by dbt Labs. If you're interested in forking/adopting it, reach out in #package-ecosystem on dbt Slack.
+> ⛔🏚️ This package is no longer developed or maintained by dbt Labs. A fork is maintained at https://github.com/fleetio/dbt-segment
 
 # dbt-segment
 This [dbt package](https://docs.getdbt.com/docs/package-management):
