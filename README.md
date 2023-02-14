@@ -1,4 +1,4 @@
-> ⛔🏚️ This package is not officially related to Segment and is maintained by [Fleetio](https://fleetio.com). CI jobs run on PRs will only test for postgres compatibility. We're working on setting up a service account to support tests for Snowflake. Please submit an issue for any bugs/feature requests related to Redshift or BigQuery and we'll figure out how to help!
+> This package is not officially related to Segment and is maintained by [Fleetio](https://fleetio.com). CI jobs run on PRs will only test for postgres compatibility. We're working on setting up a service account to support tests for Snowflake. Please submit an issue for any bugs/feature requests related to Redshift or BigQuery and we'll figure out how to help!
 
 # dbt-segment
 This [dbt package](https://docs.getdbt.com/docs/package-management):
