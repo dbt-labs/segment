@@ -52,7 +52,6 @@ renamed as (
         context_campaign_name as utm_campaign,
         context_campaign_term as utm_term,
         context_campaign_content as utm_content,
-        context_campaign_type as utm_type,
         {{ dbt_utils.get_url_parameter('url', 'gclid') }} as gclid,
         context_ip as ip,
         context_user_agent as user_agent,
