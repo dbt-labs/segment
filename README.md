@@ -18,7 +18,7 @@ config-version: 2
 ...
 
 vars:
-  segment:
+  dbt_segment:
     segment_page_views_table: "{{ source('segment', 'pages') }}"
 
 ```
@@ -38,7 +38,7 @@ config-version: 2
 ...
 
 vars:
-  segment:
+  dbt_segment:
     segment_page_views_table: "{{ source('segment', 'pages') }}"
     segment_sessionization_trailing_window: 3
     segment_inactivity_cutoff: 30 * 60
