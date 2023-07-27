@@ -1,42 +1,24 @@
-{{ config(
-    materialized = 'incremental',
-    unique_key = 'session_id',
-    sort = 'session_start_tstamp',
-    partition_by = {'field': 'session_start_tstamp', 'data_type': 'timestamp', 'granularity': var('segment_bigquery_partition_granularity')},
-    dist = 'session_id',
-    cluster_by = 'session_id'
-    )}}
+with source as (
 
-with sessions as (
-
-    select * from {{ref('segment_web_sessions__initial')}}
-
-    {% if is_incremental() %}
-    {{
-        generate_sessionization_incremental_filter( this, 'session_start_tstamp', 'session_start_tstamp', '>' )
-    }}
-    {% endif %}
-
+    select * from {{ source('lyka_interface_prod', 'identifies') }}
+    where CHAR_LENGTH(user_id) = 5 --AL: last observed error rate of 8 (includes 'Checkout Completed') on 19 Jun 2023
 ),
 
-id_stitching as (
-
-    select * from {{ref('segment_web_user_stitching')}}
-
-),
-
-joined as (
+renamed as (
 
     select
-
-        sessions.*,
-
-        coalesce(id_stitching.user_id, sessions.anonymous_id)
-            as blended_user_id
-
-    from sessions
-    left join id_stitching using (anonymous_id)
+        distinct
+        anonymous_id,
+        user_id,
+        timestamp,
+        row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number, --AL: sequence_number = 1 will be the most recent (timestamp) identify call on the user
+    from source
 
 )
 
-select * from joined
+select
+*,
+row_number() over (partition by user_id order by timestamp desc) as device_sequence_number --AL: device_sequence_number = 1 will be the most recent (timestamp) device that had an identify call
+--AL: ast at 29/06/23 still very few instances where multiple annon_id mapped to single user_id.
+from renamed
+where sequence_number = 1
