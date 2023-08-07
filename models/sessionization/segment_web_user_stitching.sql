@@ -3,12 +3,9 @@
 
 with source as (
 
-    select * from {{ source('lyka_interface_prod', 'identifies') }}
-    where email is not null
-    or (
-        user_id is not null
-        and CHAR_LENGTH(user_id) = 5 --AL: last observed error rate of 8 (includes 'Checkout Completed') on 19 Jun 2023
-    )
+    select * from lyka_interface_prod.identifies
+    where (email is not null or user_id is not null)
+        and user_id != 'Checkout Completed' --AL: last observed error rate of 8 (includes 'Checkout Completed') on 19 Jun 2023
 )
 
 , identify as (
@@ -18,7 +15,6 @@ with source as (
         user_id,
     from source
     where user_id is not null
-
 )
 
 , device as (
