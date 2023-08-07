@@ -1,16 +1,17 @@
+
 {{config(materialized = 'table')}}
 
 with source as (
 
     select * from {{ source('lyka_interface_prod', 'identifies') }}
     where email is not null
-    or (user_id is not null and CHAR_LENGTH(user_id) = 5) --AL: last observed error rate of 8 (includes 'Checkout Completed') on 19 Jun 2023
+    or (
+        user_id is not null
+        and CHAR_LENGTH(user_id) = 5 --AL: last observed error rate of 8 (includes 'Checkout Completed') on 19 Jun 2023
+    )
 )
 
---AL: sequence_number = 1 will be the most recent (timestamp) identify call on the user
-
-
-, email as (
+, identify as (
     select
         distinct
         email,
@@ -33,7 +34,7 @@ with source as (
 )
 
 select
-device.anonymous_id, device.email, email.user_id
+device.anonymous_id, device.email, identify.user_id
 from device
-left join email on device.email = email.email
+left join identify on device.email = identify.email
 where device.sequence_number = 1
