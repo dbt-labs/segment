@@ -1,36 +1,28 @@
-
 {{config(materialized = 'table')}}
 
 with source as (
 
-    select * from lyka_interface_prod.identifies
-    where (email is not null or user_id is not null)
-        and user_id != 'Checkout Completed' --AL: last observed error rate of 8 (includes 'Checkout Completed') on 19 Jun 2023
-)
+    select * from {{ source('lyka_interface_prod', 'identifies') }}
+    where CHAR_LENGTH(user_id) = 5 --AL: last observed error rate of 8 (includes 'Checkout Completed') on 19 Jun 2023
+),
 
-, identify as (
-    select
-        distinct
-        email,
-        user_id,
-        row_number() over (partition by email order by timestamp desc) as sequence_number, --AL: sequence_number = 1 will be the most recent (timestamp) identify call against the user
-    from source
-    where user_id is not null
-)
-
-, device as (
+renamed as (
 
     select
         distinct
         anonymous_id,
-        email,
         user_id,
-        row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number, --AL: sequence_number = 1 will be the most recent (timestamp) identify call against the email
+        timestamp,
+        row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number, --AL: sequence_number = 1 will be the most recent (timestamp) identify call on the user
     from source
+
 )
 
 select
-device.anonymous_id, device.email, identify.user_id
-from device
-left join identify on device.email = identify.email and identify.sequence_number = 1
-where device.sequence_number = 1
+    anonymous_id,
+    user_id,
+    row_number() over (partition by user_id order by timestamp desc) as device_sequence_number --AL: device_sequence_number = 1 will be the most recent (timestamp) device that had an identify call
+--AL: ast at 29/06/23 still very few instances where multiple annon_id mapped to single user_id.
+from renamed
+where 
+    sequence_number = 1
