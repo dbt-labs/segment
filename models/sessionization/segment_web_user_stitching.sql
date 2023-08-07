@@ -13,6 +13,7 @@ with source as (
         distinct
         email,
         user_id,
+        row_number() over (partition by email order by timestamp desc) as sequence_number, --AL: sequence_number = 1 will be the most recent (timestamp) identify call on the user
     from source
     where user_id is not null
 )
@@ -24,7 +25,6 @@ with source as (
         anonymous_id,
         email,
         user_id,
-        timestamp,
         row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number, --AL: sequence_number = 1 will be the most recent (timestamp) identify call on the user
     from source
 )
@@ -32,5 +32,5 @@ with source as (
 select
 device.anonymous_id, device.email, identify.user_id
 from device
-left join identify on device.email = identify.email
+left join identify on device.email = identify.email and identify.sequence number = 1
 where device.sequence_number = 1
