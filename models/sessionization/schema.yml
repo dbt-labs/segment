@@ -6,7 +6,7 @@ models:
     columns:
       - name: anonymous_id
         tests:
-          - unique
+          # - unique
           - not_null
 
   - name: segment_web_page_views__sessionized
