@@ -6,7 +6,7 @@ models:
     columns:
       - name: anonymous_id
         tests:
-          # - unique
+          # - unique --AL: some duplication here, needs further investigation (e.g. '42551267-55eb-4b99-af95-bdc4a1baaf27')
           - not_null
 
   - name: segment_web_page_views__sessionized
