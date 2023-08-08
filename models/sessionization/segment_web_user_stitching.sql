@@ -3,9 +3,8 @@
 
 with source as (
 
-    select * from lyka_interface_prod.identifies
+    select * from l{{ source('lyka_interface_prod', 'identifies') }}
     where (email is not null or user_id is not null)
-        and user_id != 'Checkout Completed' --AL: last observed error rate of 8 (includes 'Checkout Completed') on 19 Jun 2023
 )
 
 , identify as (
@@ -30,7 +29,7 @@ with source as (
 )
 
 select
-device.anonymous_id, device.email, identify.user_id
+device.anonymous_id, device.email, identify.user_id,
 from device
 left join identify on device.email = identify.email and identify.sequence_number = 1
 where device.sequence_number = 1
