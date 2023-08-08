@@ -1,11 +1,20 @@
 with source as (
 
-    select * from lyka_interface_prod.identifies
+    select * from {{ source('lyka_interface_prod', 'identifies') }}
     where (email is not null or user_id is not null)
-        and user_id != 'Checkout Completed' --AL: last observed error rate of 8 (includes 'Checkout Completed') on 19 Jun 2023
 )
 
-renamed as (
+, identify as (
+    select
+        distinct
+        email,
+        user_id,
+        row_number() over (partition by email order by timestamp desc) as sequence_number, --AL: sequence_number = 1 will be the most recent (timestamp) identify call against the user
+    from source
+    where user_id is not null
+)
+
+, device as (
 
     select
         distinct
