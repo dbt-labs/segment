@@ -3,7 +3,7 @@ with source as (
     select
         anonymous_id, email, user_id, timestamp
     from {{ source('lyka_interface_prod', 'identifies') }}
-    where (email is not null or user_id is not null)
+    where (email is not null and anonymous_id is not null) or (user_id is not null and anonymous_id is not null)
     order by timestamp
 )
 
