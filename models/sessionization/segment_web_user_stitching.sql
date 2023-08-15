@@ -4,6 +4,12 @@ with source as (
         anonymous_id, email, user_id, timestamp
     from {{ source('lyka_interface_prod', 'identifies') }}
 
+    UNION ALL
+
+    select
+        anonymous_id, email, user_id, timestamp
+    from {{ source('lyka_service_prod', 'identifies') }}
+
 )
 
 , known_email as (
