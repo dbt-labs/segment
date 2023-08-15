@@ -23,7 +23,7 @@ with source as (
         user_id,
         row_number() over (partition by email order by timestamp desc) as sequence_number
     from source
-    where email is not null
+    where email is not null and user_id is not null
 
 )
 
@@ -38,7 +38,7 @@ with source as (
         user_id,
         row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number
     from source
-    where anonymous_id is not null
+    where anonymous_id is not null and user_id is not null
     
 )
 
@@ -53,7 +53,7 @@ with source as (
         email,
         row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number
     from source
-    where anonymous_id is not null
+    where anonymous_id is not null and email is not null
 
 )
 
