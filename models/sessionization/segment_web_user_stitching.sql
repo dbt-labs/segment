@@ -6,9 +6,10 @@ with source as (
 
 )
 
-, identified as (
+, known_email as (
 
---Each email can be associated with only 1 user, however a user can have many emails (via BaB email capture)
+--A user can have many emails (via BaB email capture)
+--In this case the email has been matched to a user
 
     select
         distinct
@@ -16,27 +17,14 @@ with source as (
         user_id,
         row_number() over (partition by email order by timestamp desc) as sequence_number
     from source
-    where email is not null and user_id is not null
+    where email is not null
 
 )
 
-, device as (
+, known_user as (
 
---Each id can be associated with only 1 email, however an email can have many ids
-
-    select
-        distinct
-        anonymous_id,
-        email,
-        row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number
-    from source
-    where anonymous_id is not null and email is not null 
-
-)
-
-, other as (
-
---Each id can be associated with only 1 user, however a user can have many ids
+--A user can have many ids
+--In this case the id has been matched to a user
 
     select
         distinct
@@ -44,19 +32,33 @@ with source as (
         user_id,
         row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number
     from source
-    where anonymous_id is not null and user_id is not null
+    where anonymous_id is not null
     
+)
+
+, unknown_email as (
+
+--An email can have many ids
+--In this case the id will be associated with an email until it is matched to a user
+
+    select
+        distinct
+        anonymous_id,
+        email,
+        row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number
+    from source
+    where anonymous_id is not null
+
 )
 
 --For the final results, take the user ID if known, and/or email otherwise
 
 select
-device.anonymous_id,
-coalesce(other.user_id, identified.user_id) as user_id,
-coalesce(identified.email, device.email) as email
-from device
-left join other on device.anonymous_id = other.anonymous_id and other.sequence_number = 1
-left join identified on identified.email = device.email and identified.sequence_number = 1
-where device.sequence_number = 1
-
---For validation, ensure each id is only represented once for each email and user (i.e. unique) and that email is only associated with one user (but can have many ids)
+known_user.anonymous_id,
+coalesce(known_email.email, unknown_email.email) as email,
+coalesce(known_user.user_id, known_email.user_id) as user_id
+from known_user
+left join unknown_email on known_user.anonymous_id = unknown_email.anonymous_id and unknown_email.sequence_number = 1
+left join known_email on unknown_email.email = known_email.email and known_email.sequence_number = 1
+where known_user.sequence_number = 1
+;
