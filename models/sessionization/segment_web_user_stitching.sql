@@ -61,4 +61,3 @@ from known_user
 left join unknown_email on known_user.anonymous_id = unknown_email.anonymous_id and unknown_email.sequence_number = 1
 left join known_email on unknown_email.email = known_email.email and known_email.sequence_number = 1
 where known_user.sequence_number = 1
-;
