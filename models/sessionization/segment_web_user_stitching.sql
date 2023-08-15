@@ -1,7 +1,4 @@
 with source as (
-
---First limit data set to identify calls against email or user or both
-
     select
         anonymous_id, email, user_id, timestamp
     from {{ source('lyka_interface_prod', 'identifies') }}
@@ -9,34 +6,25 @@ with source as (
     order by timestamp
 )
 
-, lead as (
-
---Next, find the last time an identify call was made against an email
-
+, identify as (
+    select
+        distinct
+        email,
+        user_id,
+        row_number() over (partition by email order by timestamp desc) as sequence_number, --AL: sequence_number = 1 will be where the last time a unique email has been associated with a Lyka User ID
+    from source
+    where user_id is not null
+)
+, device as (
     select
         distinct
         anonymous_id,
         email,
-        row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number
+        row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number, --AL: sequence_number = 1 will be where the last time a unique anonymous ID has been associated with an email
     from source
 )
-
-, user as (
-
---Next, find the last time an identify call was made against a user
-
-    select
-        distinct
-        anonymous_id,
-        user_id,
-        row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number
-    from source
-)
-
---For the final results, take the user ID if known, and/or email otherwise
-
 select
-user.anonymous_id, user.user_id, lead.email --AL: if user_id is null id will be stitched to email
-from user
-left join lead on user.anonymous_id = lead.anonymous_id and lead.sequence_number = 1
-where user.sequence_number = 1
+device.anonymous_id, device.email, identify.user_id --AL: if an email is associated with a Lyka User ID then it will be stitched onto the anonymous_id
+from device
+left join identify on device.email = identify.email and identify.sequence_number = 1
+where device.sequence_number = 1
