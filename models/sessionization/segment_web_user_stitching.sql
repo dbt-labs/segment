@@ -73,7 +73,11 @@ anonymous_id.anonymous_id,
 coalesce(known_email.email, unknown_email.email) as email,
 coalesce(known_user.user_id, known_email.user_id) as user_id,
 known_user.user_identified_datetime,
-row_number() over (partition by known_user.user_id order by user_identified_datetime asc) as user_identified_rank
+case
+    when known_user.user_identified_datetime is not null
+    then row_number() over (partition by known_user.user_id order by user_identified_datetime asc)
+    else null
+end as user_identified_rank
 from anonymous_id
 left join unknown_email on anonymous_id.anonymous_id = unknown_email.anonymous_id and unknown_email.sequence_number = 1
 left join known_user on anonymous_id.anonymous_id = known_user.anonymous_id and known_user.sequence_number = 1
