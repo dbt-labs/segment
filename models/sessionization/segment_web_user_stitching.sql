@@ -12,6 +12,14 @@ with source as (
 
 )
 
+, anonymous_id as (
+    select
+        distinct
+        anonymous_id
+    from source
+    where anonymous_id is not null
+)
+
 , known_email as (
 
 --A user can have many emails (via BaB email capture)
@@ -36,6 +44,7 @@ with source as (
         distinct
         anonymous_id,
         user_id,
+        cast(timestamp as datetime) as user_identified_datetime,
         row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number
     from source
     where anonymous_id is not null and user_id is not null
@@ -60,10 +69,12 @@ with source as (
 --For the final results, take the user ID if known, and/or email otherwise
 
 select
-known_user.anonymous_id,
+anonymous_id.anonymous_id,
 coalesce(known_email.email, unknown_email.email) as email,
-coalesce(known_user.user_id, known_email.user_id) as user_id
-from known_user
-left join unknown_email on known_user.anonymous_id = unknown_email.anonymous_id and unknown_email.sequence_number = 1
+coalesce(known_user.user_id, known_email.user_id) as user_id,
+known_user.user_identified_datetime,
+row_number() over (partition by known_user.user_id order by user_identified_datetime asc) as user_identified_rank
+from anonymous_id
+left join unknown_email on anonymous_id.anonymous_id = unknown_email.anonymous_id and unknown_email.sequence_number = 1
+left join known_user on anonymous_id.anonymous_id = known_user.anonymous_id and known_user.sequence_number = 1
 left join known_email on unknown_email.email = known_email.email and known_email.sequence_number = 1
-where known_user.sequence_number = 1
