@@ -27,8 +27,9 @@ with source as (
 
     select
         distinct
+        anonymous_id,
         email,
-        user_id,
+        {# user_id, #}
         row_number() over (partition by email order by timestamp desc) as sequence_number
     from source
     where email is not null and user_id is not null
@@ -81,4 +82,4 @@ end as user_identified_rank
 from anonymous_id
 left join unknown_email on anonymous_id.anonymous_id = unknown_email.anonymous_id and unknown_email.sequence_number = 1
 left join known_user on anonymous_id.anonymous_id = known_user.anonymous_id and known_user.sequence_number = 1
-left join known_email on unknown_email.email = known_email.email and known_email.sequence_number = 1
+left join known_email on unknown_email.anonymous_id = known_email.anonymous_id and known_email.sequence_number = 1
