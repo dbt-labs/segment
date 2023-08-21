@@ -29,7 +29,7 @@ with source as (
         distinct
         anonymous_id,
         email,
-        {# user_id, #}
+        user_id,
         row_number() over (partition by email order by timestamp desc) as sequence_number
     from source
     where email is not null and user_id is not null
