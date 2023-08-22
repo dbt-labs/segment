@@ -71,7 +71,7 @@ with source as (
 select
 anonymous_id.anonymous_id,
 coalesce(known_email.email, unknown_email.email) as email,
-coalesce(known_user.user_id, known_email.user_id) as user_id,
+known_user.user_id,
 known_user.user_identified_datetime,
 case
     when known_user.user_identified_datetime is not null
