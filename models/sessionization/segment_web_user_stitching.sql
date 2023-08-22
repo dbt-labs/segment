@@ -22,8 +22,7 @@ with source as (
 
 , known_email as (
 
---A user can have many emails (via BaB email capture)
---In this case the email has been matched to a user
+--In this case the email has been matched to a user account
 
     select
         distinct
@@ -37,8 +36,7 @@ with source as (
 
 , known_user as (
 
---A user can have many ids
---In this case the id has been matched to a user
+--In this case the id has been matched to a user account
 
     select
         distinct
@@ -53,8 +51,7 @@ with source as (
 
 , unknown_email as (
 
---An email can have many ids
---In this case the id will be associated with an email until it is matched to a user
+--In this case the id will be associated with an email until it is matched to a user account
 
     select
         distinct
@@ -66,7 +63,7 @@ with source as (
 
 )
 
---For the final results, take the user ID if known, and/or email otherwise
+--For the final output, take the user ID if known, and/or email if known else unknown
 
 select
 anonymous_id.anonymous_id,
