@@ -39,4 +39,4 @@ joined as (
 
 )
 
-select * from joined
+select *, cast(now() as datetime) as load_datetime from joined
