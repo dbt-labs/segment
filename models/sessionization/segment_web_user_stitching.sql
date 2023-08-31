@@ -1,3 +1,7 @@
+--The first CTE combines data from lyka_service_prod (front-end)
+--and lyka_interface_prod (back-end) for an exhaustive dataset
+--Only required fields are included
+
 with source as (
 
     select
@@ -11,6 +15,8 @@ with source as (
     from {{ source('lyka_service_prod', 'identifies') }}
 
 )
+
+--The next CTE performs some simple aggregations
 
 , anonymous_id as (
     select
@@ -30,9 +36,10 @@ with source as (
 
 )
 
-, known_email as (
-
+--The next CTE seeks to find the last known identify call between an email and a Lyka user ID.
 --In this case the email has been matched to a user account
+
+, known_email as (
 
     select
         distinct
@@ -44,9 +51,11 @@ with source as (
 
 )
 
-, known_user as (
-
+--The next CTE seeks to find the last known identify call between an anonymous ID and a Lyka user ID
 --In this case the id has been matched to a user account
+--It also includes the datetime the anonymous ID was first identified against the the anonymous ID.
+
+, known_user as (
 
     select
         distinct
@@ -59,9 +68,10 @@ with source as (
     
 )
 
-, unknown_email as (
+--The next CTE seeks to find the last known identify call between an anonymous ID and an email (where Lyka user ID is unknown)
+--In this case the id will can be associated with an email until it is matched to a user account
 
---In this case the id will be associated with an email until it is matched to a user account
+, unknown_email as (
 
     select
         distinct
@@ -73,7 +83,10 @@ with source as (
 
 )
 
---For the final output, take the user ID if known, and/or email if known else unknown
+--The final select statement includes a unique anonymous ID as the grain
+--It will also include the Lyka user ID and/or email if known, otherwise these fields will be null
+--The stitched or blended ID, will return the Lyka user ID if known, else email, else anonymous ID
+--The user identified rank is helpful where user has one or more anonymous ID associated in order to ascertain the device that was used to complete build-a-box
 
 select
 anonymous_id.anonymous_id,
