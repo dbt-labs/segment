@@ -52,7 +52,7 @@ with source as (
         distinct
         anonymous_id,
         user_id,
-        cast(timestamp as datetime) as identified_datetime,
+        cast(min(timestamp) over (partition by anonymous_id) as datetime) as first_identified_datetime,
         row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number
     from source
     where anonymous_id is not null and user_id is not null
@@ -81,10 +81,10 @@ coalesce(known_email.email, unknown_email.email) as email,
 known_user.user_id,
 cast(anonymous_id.first_seen_at as datetime) as first_seen_at,
 cast(anonymous_id.last_seen_at as datetime) as last_seen_at,
-known_user.identified_datetime,
+known_user.first_identified_datetime,
 case
-    when known_user.identified_datetime is not null
-    then row_number() over (partition by known_user.user_id order by identified_datetime asc)
+    when known_user.first_identified_datetime is not null
+    then row_number() over (partition by known_user.user_id order by first_identified_datetime asc)
     else null
 end as user_identified_rank
 from anonymous_id
