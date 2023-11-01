@@ -1,15 +1,45 @@
-with source as (
+with
 
-    select * from {{var('segment_page_views_table')}}
+{#
+The if statement below checks to see if segment_page_views_table is a string or a list, and then builds the model accordingly
+#}
 
-),
+{% if var('segment_page_views_table') is string %}
+    
+    unioned_sources AS (
+        select 'segment_page_views_table' as source_name, * from {{var('segment_page_views_table')}}
+    ),
+
+
+{% elif var('segment_page_views_table') is iterable %}
+
+    {#
+    The section below takes each of the items listed for the segment_page_views_table variable, creates CTEs for them,
+    and then adds a field to note the name of the source table that the records are related to.
+    #}
+
+    unioned_sources as (
+        {% for table_ref in var('segment_page_views_table', default=[]) %}
+            SELECT
+                '{{ table_ref }}' as source_name
+                , *
+            FROM
+                {{ ref(table_ref) }}
+            {%- if not loop.last %}
+                UNION ALL
+            {%- endif %}  
+        {% endfor %}
+        ),
+
+{% endif %}
+
 
 row_numbering as (
 
     select
         *,
-        row_number() over (partition by id order by received_at asc) as row_num
-    from source
+        row_number() over (partition by source_name, id order by received_at asc) as row_num
+    from unioned_sources
 
 ),
 
@@ -26,6 +56,7 @@ renamed as (
 
     select
 
+        source_name,
         id as page_view_id,
         anonymous_id,
         user_id,

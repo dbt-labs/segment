@@ -44,7 +44,7 @@ numbered as (
         *,
 
         row_number() over (
-            partition by anonymous_id
+            partition by source_name, anonymous_id
             order by tstamp
             ) as page_view_number
 
@@ -63,7 +63,7 @@ lagged as (
         *,
 
         lag(tstamp) over (
-            partition by anonymous_id
+            partition by source_name, anonymous_id
             order by page_view_number
             ) as previous_tstamp
 
@@ -109,7 +109,7 @@ session_numbers as (
         *,
 
         sum(new_session) over (
-            partition by anonymous_id
+            partition by source_name, anonymous_id
             order by page_view_number
             rows between unbounded preceding and current row
             ) as session_number

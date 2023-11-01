@@ -7,10 +7,10 @@
     cluster_by = 'session_id'
     )}}
 
-{% set partition_by = "partition by session_id" %}
+{% set partition_by = "partition by source_name, session_id" %}
 
 {% set window_clause = "
-    partition by session_id
+    partition by source_name, session_id
     order by page_view_number
     rows between unbounded preceding and unbounded following
     " %}
@@ -66,6 +66,7 @@ agg as (
 
     select distinct
 
+        source_name,
         session_id,
         anonymous_id,
         min(tstamp) over ( {{partition_by}} ) as session_start_tstamp,
