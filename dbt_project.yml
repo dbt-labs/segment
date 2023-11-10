@@ -38,3 +38,6 @@ vars:
   # BigQuery only: partition granularity for partition_by clause
   # options can be found here: https://docs.getdbt.com/reference/resource-configs/bigquery-configs#partition-clause
   segment_bigquery_partition_granularity: "day"
+
+  # Custom referrer mapping seed. This is a CSV version of Snowplow's [referer parser database](https://github.com/snowplow-referer-parser/referer-parser)
+  segment_referrer_mapping_seed: 'referrer_mapping'
