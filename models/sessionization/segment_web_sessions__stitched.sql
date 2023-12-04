@@ -39,4 +39,4 @@ joined as (
 
 )
 
-select *, cast(current_date as datetime) as load_datetime from joined
+select *, cast(current_datetime('Australia/Sydney') as datetime) as load_datetime from joined
