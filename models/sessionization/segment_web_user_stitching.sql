@@ -5,13 +5,13 @@
 with source as (
 
     select
-        anonymous_id, email, user_id, timestamp
+        anonymous_id, email, user_id, timestamp, loaded_at
     from {{ source('lyka_interface_prod', 'identifies') }}
 
     UNION ALL
 
     select
-        anonymous_id, email, user_id, timestamp
+        anonymous_id, email, user_id, timestamp, loaded_at
     from {{ source('lyka_service_prod', 'identifies') }}
 
 )
