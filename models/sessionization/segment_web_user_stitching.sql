@@ -29,7 +29,11 @@ with source as (
 
         max(timestamp) over (
             partition by anonymous_id
-        ) as last_seen_at
+        ) as last_seen_at,
+
+        max(loaded_at) over (
+            partition by anonymous_id
+        ) as loaded_at
 
     from source
     where anonymous_id is not null
@@ -99,7 +103,8 @@ case
     when known_user.first_identified_datetime is not null
     then row_number() over (partition by known_user.user_id order by first_identified_datetime asc)
     else null
-end as user_identified_rank
+end as user_identified_rank,
+loaded_at
 from anonymous_id
 left join unknown_email on anonymous_id.anonymous_id = unknown_email.anonymous_id and unknown_email.sequence_number = 1
 left join known_user on anonymous_id.anonymous_id = known_user.anonymous_id and known_user.sequence_number = 1
