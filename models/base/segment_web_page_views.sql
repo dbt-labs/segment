@@ -4,24 +4,6 @@ with source as (
 
 ),
 
-row_numbering as (
-
-    select
-        *,
-        row_number() over (partition by id order by received_at asc) as row_num
-    from source
-
-),
-
-deduped as (
-
-    select
-        *
-    from row_numbering
-    where row_num = 1
-
-),
-
 renamed as (
 
     select
@@ -33,6 +15,7 @@ renamed as (
         received_at as received_at_tstamp,
         sent_at as sent_at_tstamp,
         timestamp as tstamp,
+        event_date,
 
         url as page_url,
         {{ dbt_utils.get_url_host('url') }} as page_url_host,
@@ -68,7 +51,7 @@ renamed as (
 
         {% endif %}
 
-    from deduped
+    from source
 
 ),
 

@@ -118,6 +118,26 @@ session_numbers as (
 
 ),
 
+session_starts as (
+
+    --This CTE calculates the first event timestamp within any session number.
+    --Because our version of the Segment package only evaluates a sliding window
+    --of events in this model, we need to guarantee uniqueness when we calculate
+    --session_id. `session_number` is no longer globally unique so we uniquify
+    --it with the addition of the start timestamp.
+
+    select
+
+        *,
+
+        min(tstamp) over (
+            partition by anonymous_id, session_number
+            ) as session_start_tstamp
+
+    from session_numbers
+
+),
+
 session_ids as (
 
     --This CTE assigns a globally unique session id based on the combination of
@@ -127,9 +147,9 @@ session_ids as (
 
         {{dbt_utils.star(ref('segment_web_page_views'))}},
         page_view_number,
-        {{dbt_utils.surrogate_key(['anonymous_id', 'session_number'])}} as session_id
+        {{dbt_utils.surrogate_key(['anonymous_id', 'session_start_tstamp', 'session_number'])}} as session_id
 
-    from session_numbers
+    from session_starts
 
 )
 
