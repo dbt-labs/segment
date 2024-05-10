@@ -140,16 +140,35 @@ session_starts as (
 
 session_ids as (
 
-    --This CTE assigns a globally unique session id based on the combination of
-    --`anonymous_id` and `session_number`.
+    --This CTE assigns a unique session id based on the combination of
+    --`anonymous_id`, `session_start_tstamp`, and `session_number`.
+    --including `session_start_tstamp` helps us uniquify since we no longer
+    --include the full lifetime of events in `segment_web_page_views`.
 
     select
 
-        {{dbt_utils.star(ref('segment_web_page_views'))}},
-        page_view_number,
-        {{dbt_utils.surrogate_key(['anonymous_id', 'session_start_tstamp', 'session_number'])}} as session_id
+        {{dbt_utils.star(from=ref('segment_web_page_views'), relation_alias='session_starts')}},
+        session_starts.page_view_number,
+        --if an event has previously been sessionized, keep the existing session ID
+        {% if is_incremental() %}sessionized.session_id{% else %}null::string{% endif %} as existing_session_id,
+        {{dbt_utils.surrogate_key(['session_starts.anonymous_id', 'session_starts.session_start_tstamp', 'session_starts.session_number'])}} as session_id
 
     from session_starts
+    {% if is_incremental() %}
+    left join {{ this }} as sessionized
+        on session_starts.page_view_id = sessionized.page_view_id
+    {% endif %}
+
+),
+
+consolidated_session as (
+
+    select
+        * exclude (existing_session_id, session_id),
+        --this line handles new events that are part of an existing session - instead of assigning a brand new
+        --session ID, see if there's an existing session ID from other events in the same session, and use that
+        min_by(coalesce(existing_session_id, session_id), tstamp) over (partition by session_id) as session_id
+    from session_ids
 
 )
 
