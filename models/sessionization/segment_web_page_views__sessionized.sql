@@ -172,4 +172,4 @@ consolidated_session as (
 
 )
 
-select * from session_ids
+select * from consolidated_session
