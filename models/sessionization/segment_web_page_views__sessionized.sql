@@ -167,7 +167,10 @@ consolidated_session as (
         * exclude (existing_session_id, session_id),
         --this line handles new events that are part of an existing session - instead of assigning a brand new
         --session ID, see if there's an existing session ID from other events in the same session, and use that
-        min_by(coalesce(existing_session_id, session_id), tstamp) over (partition by session_id) as session_id
+        coalesce(
+            min_by(existing_session_id, tstamp) over (partition by session_id), --existing ID across the session
+            session_id --fall back to new session_id
+        ) as session_id
     from session_ids
 
 )
