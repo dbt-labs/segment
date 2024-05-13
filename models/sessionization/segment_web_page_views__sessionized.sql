@@ -149,6 +149,7 @@ session_ids as (
 
         {{dbt_utils.star(from=ref('segment_web_page_views'), relation_alias='session_starts')}},
         session_starts.page_view_number,
+        session_starts.session_start_tstamp,
         --if an event has previously been sessionized, keep the existing session ID
         {% if is_incremental() %}sessionized.session_id{% else %}null::string{% endif %} as existing_session_id,
         {{dbt_utils.surrogate_key(['session_starts.anonymous_id', 'session_starts.session_start_tstamp', 'session_starts.session_number'])}} as session_id
@@ -168,7 +169,7 @@ consolidated_session as (
         --this line handles new events that are part of an existing session - instead of assigning a brand new
         --session ID, see if there's an existing session ID from other events in the same session, and use that
         coalesce(
-            min_by(existing_session_id, tstamp) over (partition by anonymous_id, session_id), --existing ID across the session
+            min_by(existing_session_id, tstamp) over (partition by anonymous_id, session_start_tstamp), --existing ID across the session
             session_id --fall back to new session_id
         ) as session_id
     from session_ids
