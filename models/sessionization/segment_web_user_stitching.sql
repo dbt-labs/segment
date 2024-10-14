@@ -5,13 +5,13 @@
 with source as (
 
     select
-        anonymous_id, email, user_id, timestamp, loaded_at
+        anonymous_id, email, user_id, timestamp, received_at
     from {{ source('lyka_interface_prod', 'identifies') }}
 
     UNION ALL
 
     select
-        anonymous_id, email, user_id, timestamp, loaded_at
+        anonymous_id, email, user_id, timestamp, received_at
     from {{ source('lyka_service_prod', 'identifies') }}
 
 )
@@ -31,9 +31,9 @@ with source as (
             partition by anonymous_id
         ) as last_seen_at,
 
-        max(loaded_at) over (
+        max(received_at) over (
             partition by anonymous_id
-        ) as loaded_at
+        ) as received_at
 
     from source
     where anonymous_id is not null
@@ -69,7 +69,7 @@ with source as (
         row_number() over (partition by anonymous_id order by timestamp desc) as sequence_number
     from source
     where anonymous_id is not null and user_id is not null
-    
+
 )
 
 --The next CTE seeks to find the last known identify call between an anonymous ID and an email (where Lyka user ID is unknown)
@@ -104,7 +104,7 @@ case
     then row_number() over (partition by known_user.user_id order by first_identified_datetime asc)
     else null
 end as user_identified_rank,
-loaded_at
+received_at
 from anonymous_id
 left join unknown_email on anonymous_id.anonymous_id = unknown_email.anonymous_id and unknown_email.sequence_number = 1
 left join known_user on anonymous_id.anonymous_id = known_user.anonymous_id and known_user.sequence_number = 1
