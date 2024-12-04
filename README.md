@@ -1,9 +1,21 @@
+# ***Archival Notice***
+This repository has been archived.
+
+As a result all of its historical issues and PRs have been closed.
+
+Please *do not clone* this repo without understanding the risk in doing so:
+- It may have unaddressed security vulnerabilities
+- It may have unaddressed bugs
+
+<details>
+   <summary>Click for historical readme</summary>
+
 > ⛔🏚️ This package is no longer developed or maintained by dbt Labs. A fork is maintained at https://github.com/fleetio/dbt-segment
 
 # dbt-segment
 This [dbt package](https://docs.getdbt.com/docs/package-management):
-* Performs "user stitching" to tie all events associated with a cookie to the same user_id
-* Transforms pageviews into sessions ("sessionization")
+* Performs &quot;user stitching&quot; to tie all events associated with a cookie to the same user_id
+* Transforms pageviews into sessions (&quot;sessionization&quot;)
 
 
 ## Installation instructions
@@ -19,7 +31,7 @@ config-version: 2
 
 vars:
   segment:
-    segment_page_views_table: "{{ source('segment', 'pages') }}"
+    segment_page_views_table: &quot;{{ source('segment', 'pages') }}&quot;
 
 ```
 This package assumes that your data is in a structure similar to the test
@@ -39,7 +51,7 @@ config-version: 2
 
 vars:
   segment:
-    segment_page_views_table: "{{ source('segment', 'pages') }}"
+    segment_page_views_table: &quot;{{ source('segment', 'pages') }}&quot;
     segment_sessionization_trailing_window: 3
     segment_inactivity_cutoff: 30 * 60
     segment_pass_through_columns: []
@@ -52,3 +64,4 @@ the package to run successfully.
 
 ## Database support
 This package has been tested on Redshift, Snowflake, BigQuery, and Postgres.
+
